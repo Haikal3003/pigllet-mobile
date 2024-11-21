@@ -12,7 +12,7 @@ import DeleteForeverIcon from '@/assets/svg/settings/delete-forever.svg';
 export default function SettingScreen() {
   return (
     <SafeAreaView className=" bg-gray-100">
-      <ScrollView className="w-full h-full  pt-8  px-5" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
+      <ScrollView className="w-full h-full  pt-8  px-5" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 60 }}>
         <Text className="text-center text-xl font-inter">Settings</Text>
         <View className="relative w-full pt-8 gap-5">
           <Profile />

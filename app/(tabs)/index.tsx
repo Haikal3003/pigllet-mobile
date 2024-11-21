@@ -1,20 +1,20 @@
 import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Foundation from '@expo/vector-icons/Foundation';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Activity from '@/components/Activity';
+import NotifIcon from '@/assets/svg/home/notif-active.svg';
+import EyeIcon from '@/assets/svg/eye.svg';
 
 export default function HomeScreen() {
   return (
     <SafeAreaView className="relative bg-gray-50 w-full h-full">
-      <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false} className="w-full h-full">
+      <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 50 }} className="w-full h-full">
         <View className="flex-row justify-between items-center px-5 pt-8 pb-4">
           <View>
             <Text className="text-4xl font-inter">Hi, John</Text>
             <Text className="text-slate-400 font-inter">Welcome back!</Text>
           </View>
 
-          <MaterialIcons name="notifications-none" size={24} className="text-slate-900" />
+          <NotifIcon />
         </View>
 
         <View id="balance" className="my-7 px-5 flex-col gap-4">
@@ -23,7 +23,7 @@ export default function HomeScreen() {
           <View className="flex-row gap-4">
             <Text className="text-5xl font-inter text-slate-900">Rp 6,000,000</Text>
 
-            <Foundation name="eye" size={26} color="black" className="" />
+            <EyeIcon />
           </View>
         </View>
 
@@ -47,7 +47,7 @@ export default function HomeScreen() {
         </View>
 
         <View id="activities" className="relative w-full h-full bg-white">
-          <View className="flex-row justify-between items-center px-5 py-4">
+          <View className="flex-row justify-between items-center px-5 py-6">
             <Text className="font-inter text-slate-800">Recent Activity</Text>
 
             <TouchableOpacity>
@@ -55,7 +55,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
-          <View id="activity" className="flex-col gap-4">
+          <View id="activity" className="flex-col gap-6">
             <Activity />
             <Activity />
             <Activity />

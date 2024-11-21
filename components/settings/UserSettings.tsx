@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import ArrowRightIcon from '@/assets/svg/settings/keyboard-arrow-right.svg';
+import ArrowRightIcon from '@/assets/svg/arrow/keyboard-arrow-right.svg';
 
 interface UserSettingsProps {
   title: string;
