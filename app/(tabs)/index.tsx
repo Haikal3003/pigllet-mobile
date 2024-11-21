@@ -6,7 +6,7 @@ import Activity from '@/components/Activity';
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView className="relative bg-screenColor w-full h-full">
+    <SafeAreaView className="relative bg-gray-50 w-full h-full">
       <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false} className="w-full h-full">
         <View className="flex-row justify-between items-center px-5 pt-8 pb-4">
           <View>

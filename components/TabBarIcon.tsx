@@ -38,7 +38,7 @@ const TabBarIcon = ({ routeName, focused }: TabBarIconProps) => {
 
   return (
     <View className="items-center justify-center">
-      {renderIcon()}
+      {routeName === 'CreateScreen' ? <View className="w-12 h-12 rounded-full bg-red-200 items-center justify-center">{renderIcon()}</View> : renderIcon()}
       {showActivePageIndicator && <View className="absolute w-1 h-1 rounded-full bg-gray-900 -bottom-3 " />}
     </View>
   );
