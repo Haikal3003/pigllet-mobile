@@ -7,7 +7,7 @@ interface UserSettingsProps {
   options: {
     icon: React.ReactNode;
     label: string;
-    status: string;
+    status?: string;
     onPress: () => void;
   }[];
 }

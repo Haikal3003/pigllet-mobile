@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import ImageIcon from '@/assets/svg/home/image.svg';
+import ImageIcon from '@/assets/svg/image.svg';
 
 const Activity = () => {
   return (
