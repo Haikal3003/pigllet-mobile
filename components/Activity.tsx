@@ -22,7 +22,7 @@ const Activity = () => {
         <Text className="font-inter  text-sm text-slate-400">Transfer</Text>
 
         <View className="bg-slate-200 w-full px-4 items-center justify-center h-8 rounded-full">
-          <Text className="font-inter text-sm text-slate-500">Transportation</Text>
+          <Text className="font-inter text-xs text-slate-500">Transportation</Text>
         </View>
       </View>
     </View>

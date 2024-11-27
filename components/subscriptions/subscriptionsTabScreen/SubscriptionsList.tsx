@@ -5,7 +5,7 @@ import SubscriptionsCard from './SubscriptionsCard';
 
 const SubscriptionsList = () => {
   return (
-    <View className="pt-8">
+    <View className="pt-6">
       <View className="flex-row justify-between items-center">
         <View>
           <Text className="text-lg font-inter">Subscriptions</Text>

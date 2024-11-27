@@ -25,19 +25,7 @@ export default function TabLayout() {
         },
 
         tabBarIcon: ({ color, size, focused }) => {
-          return (
-            // <View className="items-center">
-            //   {route.name === 'CreateScreen' ? (
-            //     <View className="w-[50px] h-[50px] rounded-full bg-red-300/60 items-center justify-center">
-            //       <TabBarIcon routeName={route.name} focused={focused} />
-            //     </View>
-            //   ) : (
-            //     <TabBarIcon routeName={route.name} focused={focused} />
-            //   )}
-            //   {showActivePageIndicator && <View className="absolute w-[4px] h-[4px] rounded-full bg-[#333] -bottom-[12px]" />}
-            // </View>
-            <TabBarIcon routeName={route.name} focused={focused} />
-          );
+          return <TabBarIcon routeName={route.name} focused={focused} />;
         },
       })}
     >

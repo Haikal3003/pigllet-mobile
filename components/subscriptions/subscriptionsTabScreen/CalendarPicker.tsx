@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import ArrowRightIcon from '@/assets/svg/arrow/keyboard-arrow-right.svg';
 import { months } from '@/constants/months';
-import { days } from '@/constants/days';
 import Calendar from './Calendar';
 
 const CalendarPicker = () => {
@@ -15,7 +14,7 @@ const CalendarPicker = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
-    <View className="mt-8">
+    <View>
       <View className="flex-row justify-between">
         <View>
           <Text className="text-base font-inter text-slate-400">Your analytics for</Text>

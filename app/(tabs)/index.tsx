@@ -3,8 +3,11 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Activity from '@/components/Activity';
 import NotifIcon from '@/assets/svg/home/notif-active.svg';
 import EyeIcon from '@/assets/svg/eye.svg';
+import AddIcon from '@/assets/svg/add.svg';
+import { useRouter } from 'expo-router';
 
 export default function HomeScreen() {
+  const router = useRouter();
   return (
     <SafeAreaView className="relative bg-gray-50 w-full h-full">
       <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 50 }} className="w-full h-full">
@@ -40,8 +43,8 @@ export default function HomeScreen() {
               <Text className="text-[15px] font-inter">19285859</Text>
             </View>
 
-            <TouchableOpacity className="bg-red-300/30 w-12 h-12 rounded-full flex-row items-center justify-center border border-dashed border-red-300">
-              <AntDesign name="plus" size={24} color="black" />
+            <TouchableOpacity className="bg-red-300/30 w-16 h-16 rounded-full flex-row items-center justify-center border border-dashed border-red-300" onPress={() => router.push('/LoginScreen')}>
+              <AddIcon />
             </TouchableOpacity>
           </View>
         </View>

@@ -1,6 +1,5 @@
-import SubscriptionTabScreen from '@/components/subscriptions';
-import CalendarPicker from '@/components/subscriptions/CalendarPicker';
-import SubscriptionsList from '@/components/subscriptions/SubscriptionsList';
+import AnalyticsTabScreen from '@/components/subscriptions/analyticsTabScreen';
+import SubscriptionTabScreen from '@/components/subscriptions/subscriptionsTabScreen';
 import TabButton from '@/components/TabButton';
 import { useState } from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
@@ -16,7 +15,7 @@ export default function SubscriptionScreen() {
             <TabButton label="analytics" text="Analytics" selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
           </View>
 
-          {selectedTab === 'subscriptions' ? <SubscriptionTabScreen /> : null}
+          <View className="mt-8">{selectedTab === 'subscriptions' ? <SubscriptionTabScreen /> : <AnalyticsTabScreen />}</View>
         </View>
       </ScrollView>
     </SafeAreaView>
