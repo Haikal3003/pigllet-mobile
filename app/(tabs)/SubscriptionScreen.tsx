@@ -1,6 +1,6 @@
 import AnalyticsTabScreen from '@/components/subscriptions/analyticsTabScreen';
 import SubscriptionTabScreen from '@/components/subscriptions/subscriptionsTabScreen';
-import TabButton from '@/components/TabButton';
+import TabButton from '@/components/HeaderTabButton';
 import { useState } from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 

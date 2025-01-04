@@ -4,6 +4,7 @@ import Activity from '@/components/Activity';
 import NotifIcon from '@/assets/svg/home/notif-active.svg';
 import EyeIcon from '@/assets/svg/eye.svg';
 import AddIcon from '@/assets/svg/add.svg';
+import ArrowRightIcon from '@/assets/svg/arrow/keyboard-arrow-right.svg';
 import { useRouter } from 'expo-router';
 
 export default function HomeScreen() {
@@ -25,7 +26,6 @@ export default function HomeScreen() {
 
           <View className="flex-row gap-4">
             <Text className="text-5xl font-inter text-slate-900">Rp 6,000,000</Text>
-
             <EyeIcon />
           </View>
         </View>
@@ -53,8 +53,9 @@ export default function HomeScreen() {
           <View className="flex-row justify-between items-center px-5 py-6">
             <Text className="font-inter text-slate-800">Recent Activity</Text>
 
-            <TouchableOpacity>
+            <TouchableOpacity className="flex-row items-center">
               <Text className="font-inter text-slate-400">Details</Text>
+              <ArrowRightIcon />
             </TouchableOpacity>
           </View>
 

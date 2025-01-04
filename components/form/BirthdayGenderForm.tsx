@@ -36,8 +36,8 @@ const BirthdayGenderForm = () => {
     <View className="flex-1 flex-row justify-center items-center w-full gap-2 mb-4">
       <View className="w-[48%]">
         <Text className="text-base mb-2">Birthday</Text>
-        <Pressable className="relative border flex-row justify-evenly items-center border-slate-300 rounded-full p-3" onPress={showDatepicker}>
-          <Text className="text-ellipsis overflow-hidden whitespace-nowrap text-slate-300 text-sm font-inter">{formatDate(date)}</Text>
+        <Pressable className="relative border flex-row justify-evenly items-center border-slate-300 rounded-full p-3 " onPress={showDatepicker}>
+          <Text className="text-ellipsis overflow-hidden whitespace-nowrap text-sm font-inter text-slate-900">{formatDate(date)}</Text>
           <CalendarIcon />
         </Pressable>
       </View>

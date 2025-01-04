@@ -21,7 +21,7 @@ const TabBarIcon = ({ routeName, focused }: TabBarIconProps) => {
     switch (routeName) {
       case 'index':
         return focused ? <HomeFillIcon /> : <HomeIcon />;
-      case 'AnalyticsScreen':
+      case 'ExpenseScreen':
         return focused ? <AnalyticsFillIcon /> : <AnalyticsIcon />;
       case 'CreateScreen':
         return focused ? <AddCircleFillIcon /> : <AddCircleIcon />;

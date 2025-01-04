@@ -30,7 +30,7 @@ export default function TabLayout() {
       })}
     >
       <Tabs.Screen name="index" />
-      <Tabs.Screen name="AnalyticsScreen" />
+      <Tabs.Screen name="ExpenseScreen" />
       <Tabs.Screen name="CreateScreen" />
       <Tabs.Screen name="SubscriptionScreen" />
       <Tabs.Screen name="SettingScreen" />
