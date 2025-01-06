@@ -9,7 +9,7 @@ import LockIcon from '@/assets/svg/settings/lock.svg';
 import FingerPrintIcon from '@/assets/svg/settings/finger-print.svg';
 import DeleteForeverIcon from '@/assets/svg/settings/delete-forever.svg';
 
-export default function SettingScreen() {
+export default function ProfileScreen() {
   return (
     <SafeAreaView className=" bg-gray-100">
       <ScrollView className="w-full h-full  pt-8  px-5" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 60 }}>

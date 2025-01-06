@@ -9,7 +9,7 @@ import { AuthContext, AuthProvider } from '@/context/AuthProvider';
 export { ErrorBoundary } from 'expo-router';
 
 export const unstable_settings = {
-  initialRouteName: '(tabs)',
+  initialRouteName: '(secure-routes)',
 };
 
 // Prevent splash screen auto-hide

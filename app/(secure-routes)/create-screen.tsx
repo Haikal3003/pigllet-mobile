@@ -1,8 +1,9 @@
+import { useState } from 'react';
+import { View, SafeAreaView, ScrollView } from 'react-native';
+
 import ManuallyTabScreen from '@/components/create/manuallyTabScreen';
 import ScannerTabScreen from '@/components/create/scannerTabScreen';
 import HeaderTabButton from '@/components/HeaderTabButton';
-import { useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 
 export default function CreateScreen() {
   const [selectedTab, setSelectedTab] = useState<string>('manually');
