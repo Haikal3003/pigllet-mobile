@@ -3,25 +3,30 @@ import React from 'react';
 import FilterIcon from '@/assets/svg/filter.svg';
 import SubscriptionsCard from './SubscriptionsCard';
 
+type Subscriptions = {id: number, title: string, due_date: string, is_paid: boolean, total: number}[]
+
+const subscriptions: Subscriptions = [
+  {id: 1, title: 'Netflix', due_date: new Date().toISOString(), is_paid: false, total: 57500},
+  {id: 2, title: 'HBO', due_date: new Date().toISOString(), is_paid: true, total: 55000},
+  {id: 3, title: 'New York Times', due_date: new Date().toISOString(), is_paid: false, total: 67000},
+  {id: 4, title: 'Blinklist', due_date: new Date().toISOString(), is_paid: true, total: 25000},
+]
+
 const SubscriptionsList = () => {
   return (
-    <View className="pt-6">
+    <View className='mt-8'>
       <View className="flex-row justify-between items-center">
-        <View>
-          <Text className="text-lg font-inter">Subscriptions</Text>
-        </View>
-        <TouchableOpacity className="flex-row items-center justify-center px-4 h-12 border border-slate-300 rounded-xl">
+        <Text className="font-sans text-base" style={{fontWeight: '600'}}>Subscriptions</Text>
+        
+        <TouchableOpacity className="flex-row items-center justify-center px-4 h-10 border border-red-100 rounded-lg">
           <FilterIcon />
         </TouchableOpacity>
       </View>
 
-      <View className="mt-8 gap-6">
-        <SubscriptionsCard />
-        <SubscriptionsCard />
-        <SubscriptionsCard />
-        <SubscriptionsCard />
-        <SubscriptionsCard />
-        <SubscriptionsCard />
+      <View className="mt-8" style={{gap: 28}}>
+        {subscriptions.map(subs => (
+          <SubscriptionsCard key={subs.id} {...subs} />
+        ))}
       </View>
     </View>
   );

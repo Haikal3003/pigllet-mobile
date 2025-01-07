@@ -15,7 +15,7 @@ interface UserSettingsProps {
 const UserSettings = ({ title, options }: UserSettingsProps) => {
   return (
     <View>
-      <Text className="text-base font-inter mb-2">{title}</Text>
+      <Text className="text-base font-sans mb-2">{title}</Text>
 
       <View className="w-full h-auto bg-white rounded-2xl border border-slate-200">
         {options.map((option, i) => {
@@ -25,11 +25,11 @@ const UserSettings = ({ title, options }: UserSettingsProps) => {
               <View className={`flex-row justify-between items-center p-4 rounded-lg ${!isLastOption ? 'border-b border-slate-200' : ''}`}>
                 <View className="flex-row items-center">
                   {option.icon}
-                  <Text className="ml-3 text-base font-inter text-gray-900">{option.label}</Text>
+                  <Text className="ml-3 text-base font-sans text-gray-900">{option.label}</Text>
                 </View>
 
                 <View className="flex-row items-center ">
-                  <Text className="text-slate-400 font-inter">{option.status}</Text>
+                  <Text className="text-slate-400 font-sans">{option.status}</Text>
                   <ArrowRightIcon />
                 </View>
               </View>

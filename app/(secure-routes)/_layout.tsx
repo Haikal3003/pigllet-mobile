@@ -13,7 +13,7 @@ const tabsMenu = [
 export default function TabLayout() {
   return (
     <Tabs
-    screenOptions={({ route }) => ({
+    screenOptions={() => ({
       headerShown: false,
       tabBarShowLabel: false,
       tabBarStyle: {

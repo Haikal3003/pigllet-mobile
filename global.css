@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 Text {
-  @apply font-inter;
+  @apply font-sans;
 }

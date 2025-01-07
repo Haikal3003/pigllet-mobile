@@ -37,7 +37,7 @@ const BirthdayGenderForm = () => {
       <View className="w-[48%]">
         <Text className="text-base mb-2">Birthday</Text>
         <Pressable className="relative border flex-row justify-evenly items-center border-slate-300 rounded-full p-3 " onPress={showDatepicker}>
-          <Text className="text-ellipsis overflow-hidden whitespace-nowrap text-sm font-inter text-slate-900">{formatDate(date)}</Text>
+          <Text className="text-ellipsis overflow-hidden whitespace-nowrap text-sm font-sans text-slate-900">{formatDate(date)}</Text>
           <CalendarIcon />
         </Pressable>
       </View>
@@ -47,7 +47,7 @@ const BirthdayGenderForm = () => {
       <View className="w-[48%]">
         <Text className="text-base mb-2">Gender</Text>
         <Pressable className="relative border flex-row justify-between items-center border-slate-300 rounded-full p-3" onPress={toggleGenderDropdown}>
-          <Text className="text-ellipsis overflow-hidden whitespace-nowrap text-sm font-inter">{gender}</Text>
+          <Text className="text-ellipsis overflow-hidden whitespace-nowrap text-sm font-sans">{gender}</Text>
           <ArrowDropDown />
         </Pressable>
 
@@ -60,7 +60,7 @@ const BirthdayGenderForm = () => {
                 setShowGender(false);
               }}
             >
-              <Text className="text-sm font-inter">Male</Text>
+              <Text className="text-sm font-sans">Male</Text>
             </Pressable>
             <Pressable
               className="border-b border-slate-300 p-3 "
@@ -69,7 +69,7 @@ const BirthdayGenderForm = () => {
                 setShowGender(false);
               }}
             >
-              <Text className="text-sm font-inter">Female</Text>
+              <Text className="text-sm font-sans">Female</Text>
             </Pressable>
           </View>
         )}

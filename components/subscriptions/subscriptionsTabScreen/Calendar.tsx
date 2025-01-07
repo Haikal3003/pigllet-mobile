@@ -1,53 +1,57 @@
-import { View, Text } from 'react-native';
-import React from 'react';
 import { days } from '@/constants/days';
+import { View, Text } from 'react-native';
 
-const Calendar = ({ selectedYear, selectedMonth }: any) => {
-  const firstDayofMonth = new Date(selectedYear, selectedMonth, 1).getDay();
-  const lastDateofMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
-  const lastDayofMonth = new Date(selectedYear, selectedMonth, lastDateofMonth).getDay();
-  const lastDateofLastMonth = new Date(selectedYear, selectedMonth, 0).getDate();
+const Calendar = ({ selectedYear, selectedMonth }: { selectedYear: number; selectedMonth: number }) => {
+  const today = new Date();
+  const todayDate = today.getDate();
+  const todayYear = today.getFullYear();
+  const todayMonth = today.getMonth();
 
-  const prevDates = Array.from({ length: firstDayofMonth }, (_, i) => lastDateofLastMonth - firstDayofMonth + i + 1);
-  const currentDates = Array.from({ length: lastDateofMonth }, (_, i) => i + 1);
-  const nextDates = Array.from({ length: 6 - lastDayofMonth }, (_, i) => i + 1);
+  const isToday = (date: number) =>
+    date === todayDate && selectedMonth === todayMonth && selectedYear === todayYear;
 
-  const date = new Date();
-  const todayDate = date.getDate();
-  const todayYear = date.getFullYear();
-  const todayMonth = date.getMonth();
+  // Generate dates
+  const firstDayOfMonth = new Date(selectedYear, selectedMonth, 1).getDay();
+  const lastDateOfMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
+  const lastDateOfLastMonth = new Date(selectedYear, selectedMonth, 0).getDate();
+  const lastDayOfMonth = new Date(selectedYear, selectedMonth, lastDateOfMonth).getDay();
 
-  const isToday = (date: number) => date === todayDate && selectedMonth === todayMonth && selectedYear === todayYear;
+  const prevDates = Array.from(
+    { length: firstDayOfMonth },
+    (_, i) => lastDateOfLastMonth - firstDayOfMonth + i + 1
+  );
+  const currentDates = Array.from({ length: lastDateOfMonth }, (_, i) => i + 1);
+  const nextDates = Array.from({ length: 6 - lastDayOfMonth }, (_, i) => i + 1);
+
+  const renderDate = (date: number, isCurrent: boolean, isToday: boolean, key: string) => (
+    <View key={key} className={`items-center justify-center rounded-lg ${isToday ? 'bg-red-100' : 'bg-slate-100'}`} style={{width: '13.7%', height: 48}}>
+      <Text className={`font-sans text-sm ${isCurrent ? 'text-slate-900' : 'text-gray-400'}`}>
+        {date}
+      </Text>
+    </View>
+  );
 
   return (
     <View>
-      <View className="flex-1 flex-row items-center justify-center">
+      {/* Days Header */}
+      <View className="flex-row items-center justify-between bg-slate-100 p-1 rounded-md border border-slate-200">
         {days.map((day, i) => (
-          <View key={i} className="flex-1 items-center">
-            <Text className="text-base font-inter ">{day}</Text>
-          </View>
+          <Text
+            key={i}
+            className="flex-1 text-base font-sans text-center text-slate-600"
+          >
+            {day}
+          </Text>
         ))}
       </View>
 
-      <View className="flex-row flex-wrap justify-start mt-8">
-        {prevDates.map((date, i) => (
-          <View key={`prev-${i}`} className="w-[14.28%] h-16 items-center  ">
-            <Text className="text-gray-400 font-inter text-sm">{date}</Text>
-          </View>
-        ))}
-
-        {currentDates.map((date, i) => (
-          <View key={`current-${i}`} className="w-[14.28%] h-16 items-center justify-center}">
-            <Text className="font-inter text-sm">{date}</Text>
-            {isToday(date) && <View className="absolute w-2 h-2 rounded-xl bg-red-400 bottom-6" />}
-          </View>
-        ))}
-
-        {nextDates.map((date, i) => (
-          <View key={`next-${i}`} className="w-[14.28%] h-16 items-center ">
-            <Text className="text-gray-400 font-inter text-sm">{date}</Text>
-          </View>
-        ))}
+      {/* Calendar Dates */}
+      <View className="flex-row flex-wrap justify-start mt-8" style={{gap: 2}}>
+        {prevDates.map((date, i) => renderDate(date, false, false, `prev-${i}`))}
+        {currentDates.map((date, i) =>
+          renderDate(date, true, isToday(date), `current-${i}`)
+        )}
+        {nextDates.map((date, i) => renderDate(date, false, false, `next-${i}`))}
       </View>
     </View>
   );

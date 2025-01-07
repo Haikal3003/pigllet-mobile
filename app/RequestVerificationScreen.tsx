@@ -48,7 +48,7 @@ export default function RequestVerificationScreen() {
   return (
     <View className="flex-1 justify-center items-center bg-gray-100">
       <TouchableOpacity className="bg-red-300 p-4 rounded-md" onPress={handleSendVerificationEmail}>
-        <Text className="text-center text-lg font-inter">Send Verification Email</Text>
+        <Text className="text-center text-lg font-sans">Send Verification Email</Text>
       </TouchableOpacity>
     </View>
   );

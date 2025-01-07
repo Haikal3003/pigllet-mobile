@@ -18,6 +18,24 @@ const dailyData = [
   { value: 450000 },
   { value: 300000 },
   { value: 150000 },
+  { value: 160000 },
+  { value: 170000 },
+  { value: 180000 },
+  { value: 190000 },
+  { value: 200000 },
+  { value: 110000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
+  { value: 150000 },
 ];
 
 const monthlyData = [
@@ -63,16 +81,16 @@ const BarChart = ({ selectedTab }: BarChartProps) => {
               <View key={i} style={{ position: 'relative' }}>
                 <Pressable onPress={() => setActiveBar(i)}>
                   <View
-                    className="w-10 mb-2"
+                    className="w-6 mb-2"
                     style={{
                       height: barHeight,
-                      borderTopLeftRadius: 10,
-                      borderTopRightRadius: 10,
-                      backgroundColor: isActiveBar ? '#fca5a5' : '#e2e8f0',
+                      borderTopLeftRadius: 4,
+                      borderTopRightRadius: 4,
+                      backgroundColor: isActiveBar ? '#FF4C66' : '#FFDDE2',
                       zIndex: 1,
                     }}
                   />
-                  <Text className="text-center text-sm font-inter text-slate-500">{i + 1}</Text>
+                  <Text className="text-center text-sm font-sans text-slate-500">{i + 1}</Text>
 
                   {activeBar === i && (
                     <View
@@ -82,7 +100,7 @@ const BarChart = ({ selectedTab }: BarChartProps) => {
                         zIndex: 10,
                       }}
                     >
-                      <Text className="text-xs font-inter z-10">{selectedTab === 'daily' ? `Rp ${item.value.toLocaleString('id-ID')}` : `Rp ${item.value.toLocaleString('id-ID')}`}</Text>
+                      <Text className="text-xs font-sans z-10">{selectedTab === 'daily' ? `Rp ${item.value.toLocaleString('id-ID')}` : `Rp ${item.value.toLocaleString('id-ID')}`}</Text>
                     </View>
                   )}
                 </Pressable>

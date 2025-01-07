@@ -8,10 +8,10 @@ const NotLoggedInAllert = () => {
       <View className="flex-row w-full ">
         <AccountCircleIcon />
         <View className="pl-2 w-[90%] relative ">
-          <Text className="text-base text-red-900 font-inter mb-2">You are not logged in!</Text>
+          <Text className="text-base text-red-900 font-sans mb-2">You are not logged in!</Text>
           <Text
             className="text-base text-black/50
-           font-inter "
+           font-sans "
           >
             You are not logged in hence your could sync is paused. You can log in by clicking on your profile picture.
           </Text>

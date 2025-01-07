@@ -1,9 +1,10 @@
+import {useState} from 'react';
+import {View, ScrollView} from 'react-native';
+
 import ExpenseDaily from '@/components/expense/ExpenseDaily';
 import ExpenseMonthly from '@/components/expense/ExpenseMonthly';
 import ExpenseYearly from '@/components/expense/ExpenseYearly';
 import HeaderTabButton from '@/components/HeaderTabButton';
-import { useEffect, useState } from 'react';
-import { View, Text, SafeAreaView, Pressable } from 'react-native';
 
 export default function ExpenseScreen() {
   const [selectedTab, setSelectedTab] = useState<string>('daily');
@@ -23,18 +24,14 @@ export default function ExpenseScreen() {
   };
 
   return (
-    <SafeAreaView className="w-full h-full bg-white">
-      <View className="pt-10 px-6">
-        <View className="relative flex-row justify-between border border-slate-400 p-1 rounded-xl">
-          <HeaderTabButton label="daily" text="Daily" selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-          <HeaderTabButton label="monthly" text="Monthly" selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-          <HeaderTabButton label="yearly" text="Yearly" selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        </View>
+    <ScrollView className="flex-1 w-full bg-white px-6 pt-14 pb-10">
+      <View className="flex-row justify-between border border-red-100 p-1 rounded-xl mb-8 bg-slate-100">
+        <HeaderTabButton label="daily" text="Daily" selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        <HeaderTabButton label="monthly" text="Monthly" selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        <HeaderTabButton label="yearly" text="Yearly" selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       </View>
 
-      <View id="content-tab" className="mt-8 px-5">
-        {renderContent()}
-      </View>
-    </SafeAreaView>
+      {renderContent()}
+    </ScrollView>
   );
 }

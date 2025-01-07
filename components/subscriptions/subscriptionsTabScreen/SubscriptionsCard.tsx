@@ -1,26 +1,19 @@
 import { Text, View } from 'react-native';
-import React from 'react';
-import ImageIcon from '@/assets/svg/image.svg';
 
-const SubscriptionsCard = () => {
+type Subscription = {id: number, title: string, due_date: string, is_paid: boolean, total: number}
+
+const SubscriptionsCard = (props: Subscription) => {
   return (
-    <View className="flex-row justify-between">
-      <View className="flex-row">
-        <View className="w-[60px] h-[60px] bg-gray-100 rounded-full items-center justify-center">
-          <ImageIcon />
-        </View>
-        <View className="ml-6">
-          <Text className="font-inter text-base">Netflix</Text>
-          <Text className="font-inter text-sm text-slate-400">Due Tues, 12 Nov 2024</Text>
-          <Text className="font-inter text-sm text-slate-400">In-app payment</Text>
-        </View>
+    <View className="flex-row justify-between gap-6 items-start">
+      <View>
+        <Text className="font-sans text-base text-slate-900">{props.title}</Text>
+        <Text className="font-sans text-sm text-slate-600">Due Tues, 12 Nov 2024</Text>
       </View>
 
       <View className="items-end">
-        <View className="px-4 py-1 bg-slate-100 rounded-full">
-          <Text className="font-inter text-sm text-slate-400">Unpaid</Text>
-        </View>
-        <Text className="font-inter text-lg">Rp 50,000</Text>
+        <Text className={`font-sans text-xs rounded-full px-3 p-[2px] text-white ${props.is_paid ? 'bg-[#3AC100]' : 'bg-[#F0334F]'}`}>{props.is_paid ? 'Paid' : 'Not Paid'}</Text>
+        
+        <Text className="font-sans text-base">Rp {props.total}</Text>
       </View>
     </View>
   );

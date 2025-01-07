@@ -9,16 +9,16 @@ const SummaryExpense = () => {
       <Pressable className="flex-1 flex-row border-">
         <ArrowDropupIcon />
         <View>
-          <Text className="text-sm text-slate-400 font-inter">Today income</Text>
-          <Text className="text-base font-inter">Rp 6,000,000</Text>
+          <Text className="text-sm text-slate-400 font-sans">Today income</Text>
+          <Text className="text-base font-sans">Rp 6,000,000</Text>
         </View>
       </Pressable>
 
       <Pressable className="flex-1 flex-row">
         <ArrowDropdownIcon />
         <View>
-          <Text className="text-sm text-slate-400 font-inter">Today expense</Text>
-          <Text className="text-base font-inter">- Rp 4,365,000</Text>
+          <Text className="text-sm text-slate-400 font-sans">Today expense</Text>
+          <Text className="text-base font-sans">- Rp 4,365,000</Text>
         </View>
       </Pressable>
     </View>

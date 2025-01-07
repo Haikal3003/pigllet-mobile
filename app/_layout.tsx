@@ -1,10 +1,11 @@
+import { Stack } from 'expo-router';
+import { AuthContext, AuthProvider } from '@/context/AuthProvider';
 import React, { useContext, useEffect } from 'react';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
+
 import '../global.css';
-import { AuthContext, AuthProvider } from '@/context/AuthProvider';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -17,7 +18,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [fontsLoaded, fontsError] = useFonts({
-    inter: require('../assets/fonts/Inter_28pt-Regular.ttf'),
+    inter: require('../assets/fonts/geist.ttf'),
   });
 
   useEffect(() => {

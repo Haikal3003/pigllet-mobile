@@ -9,7 +9,7 @@ interface ButtonProps extends TouchableOpacityProps {
 const Button = ({ text, onPress, ...props }: ButtonProps) => {
   return (
     <TouchableOpacity onPress={onPress} className={'border border-slate-300 py-3 rounded-full items-center mt-6'} {...props}>
-      <Text className=" text-lg font-inter">{text}</Text>
+      <Text className=" text-lg font-sans">{text}</Text>
     </TouchableOpacity>
   );
 };

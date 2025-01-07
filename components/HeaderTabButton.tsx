@@ -10,8 +10,8 @@ interface HeaderTabButtonProps {
 
 const HeaderTabButton = ({ label, text, selectedTab, setSelectedTab }: HeaderTabButtonProps) => {
   return (
-    <Pressable className={`flex-1 items-center ${selectedTab === label ? 'bg-slate-200 border border-slate-400' : 'border-transparent'}   justify-center py-2 rounded-xl`} onPress={() => setSelectedTab(label)}>
-      <Text className={`text-center ${selectedTab === label ? 'text-black' : 'text-gray-600'} font-inter`}>{text}</Text>
+    <Pressable className={`justify-center py-2 rounded-lg flex-1 items-center ${selectedTab === label ? 'bg-[#FF4863] border border-[#FF6A83]' : 'border-transparent'}`} onPress={() => setSelectedTab(label)}>
+      <Text className={`text-center ${selectedTab === label ? 'text-white' : 'text-slate-900'} font-sans`}>{text}</Text>
     </Pressable>
   );
 };

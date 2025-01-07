@@ -15,15 +15,17 @@ const CalendarPicker = () => {
 
   return (
     <View>
-      <View className="flex-row justify-between">
+      <View className="flex-row justify-between mb-8">
         <View>
-          <Text className="text-base font-inter text-slate-400">Your analytics for</Text>
-          <Text className="text-2xl font-inter">Rp 605,000</Text>
+          <Text className="text-base font-sans text-slate-600">Your total this month</Text>
+          <Text className="text-2xl font-sans text-slate-900" style={{fontWeight: 600}}>Rp 605,000</Text>
         </View>
-        <TouchableOpacity className="flex-row items-center justify-center w-auto px-4 h-12 border border-slate-300 rounded-xl" onPress={() => setIsModalVisible(!isModalVisible)}>
-          <Text className="font-inter text-slate-500">
+
+        <TouchableOpacity className="flex-row items-center justify-center w-auto px-4 h-10 border border-red-100 rounded-lg" onPress={() => setIsModalVisible(!isModalVisible)}>
+          <Text className="font-sans text-slate-900">
             {months[selectedMonth]}, {selectedYear}
           </Text>
+
           <ArrowRightIcon />
         </TouchableOpacity>
       </View>
@@ -40,16 +42,14 @@ const CalendarPicker = () => {
                   setIsModalVisible(false);
                 }}
               >
-                <Text className={`text-center font-inter text-sm ${i === selectedMonth ? 'text-black' : 'text-slate-500'}`}>{month}</Text>
+                <Text className={`text-center font-sans text-sm ${i === selectedMonth ? 'text-black' : 'text-slate-500'}`}>{month}</Text>
               </TouchableOpacity>
             ))}
           </View>
         </View>
       )}
 
-      <View className="pt-8">
-        <Calendar selectedYear={selectedYear} selectedMonth={selectedMonth} />
-      </View>
+      <Calendar selectedYear={selectedYear} selectedMonth={selectedMonth} />
     </View>
   );
 };

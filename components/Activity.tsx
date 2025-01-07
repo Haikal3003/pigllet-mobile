@@ -10,19 +10,19 @@ const Activity = () => {
         </View>
 
         <View className="ml-6">
-          <Text className="font-inter text-base">Some Payment</Text>
-          <Text className="font-inter text-sm text-slate-400">Tues, 12 Nov 2024</Text>
+          <Text className="font-sans text-base">Some Payment</Text>
+          <Text className="font-sans text-sm text-slate-400">Tues, 12 Nov 2024</Text>
 
-          <Text className="font-inter text-sm text-slate-400">Paid with DANA</Text>
+          <Text className="font-sans text-sm text-slate-400">Paid with DANA</Text>
         </View>
       </View>
 
       <View className="items-end">
-        <Text className="font-inter text-base">- Rp 250,00</Text>
-        <Text className="font-inter  text-sm text-slate-400">Transfer</Text>
+        <Text className="font-sans text-base">- Rp 250,00</Text>
+        <Text className="font-sans  text-sm text-slate-400">Transfer</Text>
 
         <View className="bg-slate-200 w-full px-4 items-center justify-center h-8 rounded-full">
-          <Text className="font-inter text-xs text-slate-500">Transportation</Text>
+          <Text className="font-sans text-xs text-slate-500">Transportation</Text>
         </View>
       </View>
     </View>

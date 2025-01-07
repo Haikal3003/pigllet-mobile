@@ -13,10 +13,12 @@ export default function ProfileScreen() {
   return (
     <SafeAreaView className=" bg-gray-100">
       <ScrollView className="w-full h-full  pt-8  px-5" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 60 }}>
-        <Text className="text-center text-xl font-inter">Settings</Text>
+        <Text className="text-center text-xl font-sans">Settings</Text>
         <View className="relative w-full pt-8 gap-5">
           <Profile />
+          
           <NotLoggedInAllert />
+
           <UserSettings
             title="Account"
             options={[
@@ -26,19 +28,19 @@ export default function ProfileScreen() {
             ]}
           />
 
-          <UserSettings
+          {/* <UserSettings
             title="Personalization"
             options={[
-              { icon: <LockIcon />, label: 'PIN', status: 'ON', onPress: () => {} },
-              { icon: <FingerPrintIcon />, label: 'Fingerprint', status: 'OF', onPress: () => {} },
+              { icon: <LockIcon />, label: 'PIN', status: 'On', onPress: () => {} },
+              { icon: <FingerPrintIcon />, label: 'Fingerprint', status: 'Off', onPress: () => {} },
             ]}
-          />
+          /> */}
 
           <UserSettings
             title="Security"
             options={[
-              { icon: <LockIcon />, label: 'PIN', status: 'ON', onPress: () => {} },
-              { icon: <FingerPrintIcon />, label: 'Fingerprint', status: 'OF', onPress: () => {} },
+              { icon: <LockIcon />, label: 'PIN', status: 'On', onPress: () => {} },
+              { icon: <FingerPrintIcon />, label: 'Fingerprint', status: 'Off', onPress: () => {} },
             ]}
           />
 

@@ -9,7 +9,7 @@ const LoginScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 60 }} className="pt-8 px-5">
-        <Text className="text-2xl font-inter mb-8 text-center">Login</Text>
+        <Text className="text-2xl font-sans mb-8 text-center">Login</Text>
 
         <FormField label="Email" placeholder="Enter your email..." keyboardType="email-address" />
 

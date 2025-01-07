@@ -16,7 +16,7 @@ const FormField: React.FC<FormFieldProps> = ({ label, ...props }) => {
     <View className="mb-4">
       <Text className="text-base mb-2">{label}</Text>
       <View>
-        <TextInput className="border border-slate-300 rounded-full p-4 text-base font-inter" secureTextEntry={isPasswordField && !isPasswordVisible} {...props} />
+        <TextInput className="border border-slate-300 rounded-full p-4 text-base font-sans" secureTextEntry={isPasswordField && !isPasswordVisible} {...props} />
 
         {isPasswordField && (
           <TouchableOpacity onPress={() => setIsPasswordVisible(!isPasswordVisible)} className="absolute right-4 top-1/2 -translate-y-1/2">
