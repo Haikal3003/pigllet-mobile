@@ -11,8 +11,7 @@ import DeleteForeverIcon from '@/assets/svg/settings/delete-forever.svg';
 
 export default function ProfileScreen() {
   return (
-    <SafeAreaView className=" bg-gray-100">
-      <ScrollView className="w-full h-full  pt-8  px-5" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 60 }}>
+      <ScrollView className="w-full h-full pt-14 px-6 bg-slate-100" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 80 }}>
         <Text className="text-center text-xl font-sans">Settings</Text>
         <View className="relative w-full pt-8 gap-5">
           <Profile />
@@ -28,14 +27,6 @@ export default function ProfileScreen() {
             ]}
           />
 
-          {/* <UserSettings
-            title="Personalization"
-            options={[
-              { icon: <LockIcon />, label: 'PIN', status: 'On', onPress: () => {} },
-              { icon: <FingerPrintIcon />, label: 'Fingerprint', status: 'Off', onPress: () => {} },
-            ]}
-          /> */}
-
           <UserSettings
             title="Security"
             options={[
@@ -47,6 +38,5 @@ export default function ProfileScreen() {
           <UserSettings title="Delete Account" options={[{ icon: <DeleteForeverIcon />, label: 'Delete Account', status: '', onPress: () => {} }]} />
         </View>
       </ScrollView>
-    </SafeAreaView>
   );
 }

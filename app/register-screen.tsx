@@ -40,7 +40,7 @@ const RegisterScreen = () => {
 
         await AsyncStorage.setItem('userRegister', JSON.stringify(userRegister));
 
-        router.push('/RequestVerificationScreen');
+        router.push('/successfull-registration-screen');
       }
     } catch (error) {
       console.error('Registration Failed:', error);

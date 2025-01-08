@@ -12,7 +12,7 @@ const dailyData = [
   { value: 250000 },
   { value: 600000 },
   { value: 400000 },
-  { value: 800000 },
+  { value: 1200000 },
   { value: 550000 },
   { value: 350000 },
   { value: 450000 },
@@ -24,18 +24,18 @@ const dailyData = [
   { value: 190000 },
   { value: 200000 },
   { value: 110000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
-  { value: 150000 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
+  // { value: 0 },
 ];
 
 const monthlyData = [
@@ -65,51 +65,53 @@ const BarChart = ({ selectedTab }: BarChartProps) => {
     }
   }, [selectedTab]);
 
-  const maxBarHeight = 180;
+  const maxBarHeight = 150;
 
   const maxValue = Math.max(...data.map((item) => item.value));
 
   return (
-    <View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} className="pt-16">
-        <View className="flex-row items-end justify-between gap-2 -z-10">
-          {data.map((item, i) => {
-            const barHeight = (item.value / maxValue) * maxBarHeight;
-            const isActiveBar = activeBar === i;
-            const isLastBar = i === data.length - 1 || i === data.length - 2;
-            return (
-              <View key={i} style={{ position: 'relative' }}>
-                <Pressable onPress={() => setActiveBar(i)}>
-                  <View
-                    className="w-6 mb-2"
-                    style={{
-                      height: barHeight,
-                      borderTopLeftRadius: 4,
-                      borderTopRightRadius: 4,
-                      backgroundColor: isActiveBar ? '#FF4C66' : '#FFDDE2',
-                      zIndex: 1,
-                    }}
-                  />
-                  <Text className="text-center text-sm font-sans text-slate-500">{i + 1}</Text>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} className="h-60">
+      <View className="flex-row items-end justify-between gap-2 -z-10">
+        {data.map((item, i) => {
+          const barHeight = (item.value / maxValue) * maxBarHeight;
+          const isActiveBar = activeBar === i;
+          return (
+            <View key={i}>
+              <Pressable onPress={() => setActiveBar(i)}>
+                <View
+                  className="w-7 mb-2"
+                  style={{
+                    height: barHeight,
+                    borderTopLeftRadius: 8,
+                    borderTopRightRadius: 8,
+                    backgroundColor: isActiveBar ? '#FF4C66' : '#FFDDE2',
+                  }}
+                />
+                <Text className="text-center text-sm font-sans text-slate-600">{i + 1}</Text>
 
-                  {activeBar === i && (
-                    <View
-                      className={`absolute w-28 p-3 rounded-xl bg-white border border-slate-200 ${isLastBar ? 'right-0' : 'right-0'}`}
-                      style={{
-                        top: -50,
-                        zIndex: 10,
-                      }}
-                    >
-                      <Text className="text-xs font-sans z-10">{selectedTab === 'daily' ? `Rp ${item.value.toLocaleString('id-ID')}` : `Rp ${item.value.toLocaleString('id-ID')}`}</Text>
-                    </View>
-                  )}
-                </Pressable>
-              </View>
-            );
-          })}
-        </View>
-      </ScrollView>
-    </View>
+                {activeBar === i && (
+                  <View
+                    className='w-28 p-2 bg-white border border-slate-100'
+                    style={{
+                      position:'absolute',
+                      top: -35,
+                      zIndex: 100,
+                      left: i > 3 ? -85 : 10,
+                      borderTopLeftRadius: 8,
+                      borderTopRightRadius: 8,
+                      borderBottomLeftRadius: i > 3 ? 8 : 0,
+                      borderBottomRightRadius: i > 3 ? 0 : 8,
+                    }}
+                  >
+                    <Text className="text-xs font-sans z-10">{selectedTab === 'daily' ? `Rp ${item.value.toLocaleString('id-ID')}` : `Rp ${item.value.toLocaleString('id-ID')}`}</Text>
+                  </View>
+                )}
+              </Pressable>
+            </View>
+          );
+        })}
+      </View>
+    </ScrollView>
   );
 };
 

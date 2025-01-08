@@ -10,16 +10,15 @@ interface ExpenseProps {
 const ExpenseDaily = ({ selectedTab }: ExpenseProps) => {
   return (
     <View>
-      <View className="mb-10">
-        <View>
-          <Text className="text-slate-400 font-sans text-base">Showing expense for</Text>
-          <Text className="text-2xl font-sans">November 12, 2024</Text>
+      <View className="mb-8 flex-row justify-between">
+        <View className='w-[70%]'>
+          <Text className="text-slate-600 font-sans text-base">Showing expense for</Text>
+          <Text className="text-2xl font-sans text-[#FF2C4A]" style={{fontWeight: 800}}>November 12, 2024</Text>
         </View>
-        <View className="flex-row justify-end mt-2">
-          <TouchableOpacity className="py-2 px-6 border border-slate-200 rounded-xl flex-row justify-center items-center place-content-end">
-            <CalendarIcon />
-          </TouchableOpacity>
-        </View>
+
+        <TouchableOpacity className="py-2 px-6 w-10 h-10 border border-red-100 rounded-xl flex-row justify-center items-center place-content-end">
+          <CalendarIcon />
+        </TouchableOpacity>
       </View>
 
       <BarChart selectedTab={selectedTab} />

@@ -24,7 +24,7 @@ const Calendar = ({ selectedYear, selectedMonth }: { selectedYear: number; selec
   const nextDates = Array.from({ length: 6 - lastDayOfMonth }, (_, i) => i + 1);
 
   const renderDate = (date: number, isCurrent: boolean, isToday: boolean, key: string) => (
-    <View key={key} className={`items-center justify-center rounded-lg ${isToday ? 'bg-red-100' : 'bg-slate-100'}`} style={{width: '13.7%', height: 48}}>
+    <View key={key} className={`items-center justify-center rounded-lg ${isCurrent && isToday ? 'bg-red-100' : isCurrent ? 'bg-slate-100' : 'bg-slate-50'}`} style={{width: '13.7%', height: 48}}>
       <Text className={`font-sans text-sm ${isCurrent ? 'text-slate-900' : 'text-gray-400'}`}>
         {date}
       </Text>

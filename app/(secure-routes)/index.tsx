@@ -45,7 +45,7 @@ export default function HomeScreen() {
               <Text className="text-[15px] font-sans">19285859</Text>
             </View>
 
-            <TouchableOpacity className="bg-red-300/30 w-16 h-16 rounded-full flex-row items-center justify-center border border-dashed border-red-300" onPress={() => router.push('/LoginScreen')}>
+            <TouchableOpacity className="bg-red-300/30 w-16 h-16 rounded-full flex-row items-center justify-center border border-dashed border-red-300" onPress={() => router.push('/login-screen')}>
               <AddIcon />
             </TouchableOpacity>
           </View>

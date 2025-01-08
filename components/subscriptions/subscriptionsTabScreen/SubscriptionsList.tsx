@@ -16,7 +16,7 @@ const SubscriptionsList = () => {
   return (
     <View className='mt-8'>
       <View className="flex-row justify-between items-center">
-        <Text className="font-sans text-base" style={{fontWeight: '600'}}>Subscriptions</Text>
+        <Text className="font-sans text-base" style={{fontWeight: 800}}>Subscriptions</Text>
         
         <TouchableOpacity className="flex-row items-center justify-center px-4 h-10 border border-red-100 rounded-lg">
           <FilterIcon />

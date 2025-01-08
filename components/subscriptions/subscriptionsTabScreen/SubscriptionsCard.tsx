@@ -13,7 +13,7 @@ const SubscriptionsCard = (props: Subscription) => {
       <View className="items-end">
         <Text className={`font-sans text-xs rounded-full px-3 p-[2px] text-white ${props.is_paid ? 'bg-[#3AC100]' : 'bg-[#F0334F]'}`}>{props.is_paid ? 'Paid' : 'Not Paid'}</Text>
         
-        <Text className="font-sans text-base">Rp {props.total}</Text>
+        <Text className="font-sans text-base">Rp {props.total.toLocaleString('id-ID')}</Text>
       </View>
     </View>
   );
