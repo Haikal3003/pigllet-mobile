@@ -7,7 +7,7 @@ const ScannerTabScreen = () => {
     <View>
       <TouchableOpacity className="flex-1 py-6 items-center gap-4    bg-slate-100 rounded-xl border border-slate-500 border-dashed ">
         <AddImageIcon />
-        <Text className="text-center font-inter text-sm text-slate-400">Scan image from your storage</Text>
+        <Text className="text-center font-sans text-sm text-slate-400">Scan image from your storage</Text>
       </TouchableOpacity>
     </View>
   );

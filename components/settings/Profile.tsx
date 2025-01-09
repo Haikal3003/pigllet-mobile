@@ -11,8 +11,8 @@ const Profile = () => {
           <ProfileIcon />
         </View>
         <View className="pl-4">
-          <Text className="text-lg font-inter">John Doe</Text>
-          <Text className="text-sm text-slate-400 font-inter">johndoe@gmail.com</Text>
+          <Text className="text-lg font-sans">John Doe</Text>
+          <Text className="text-sm text-slate-400 font-sans">johndoe@gmail.com</Text>
         </View>
       </View>
 
