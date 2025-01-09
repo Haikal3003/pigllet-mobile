@@ -6,7 +6,7 @@ import EyeIcon from '@/assets/svg/eye.svg';
 import AddIcon from '@/assets/svg/add.svg';
 import ArrowRightIcon from '@/assets/svg/arrow/keyboard-arrow-right.svg';
 
-import Activity from '@/components/Activity';
+import Activity from '@/components/activities';
 
 export default function HomeScreen() {
   const router = useRouter();

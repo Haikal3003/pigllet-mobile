@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import BarChart from '../BarChart';
+import BarChart from '../barcharts';
 import ArrowDownIcon from '@/assets/svg/arrow/keyboard-arrow-down.svg';
 
 interface ExpenseProps {

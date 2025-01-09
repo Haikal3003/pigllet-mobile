@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, Image, ScrollView } from 'react-native';
 import Profile from '@/components/settings/Profile';
-import NotLoggedInAllert from '@/components/settings/NotLoggedInAllert';
-import UserSettings from '@/components/settings/UserSettings';
+import NotLoggedInAllert from '@/components/settings/not-loggedin-alert';
+import UserSettings from '@/components/settings/user-setting';
 import EmailIcon from '@/assets/svg/settings/email.svg';
 import KeyIcon from '@/assets/svg/settings/key.svg';
 import LightModeIcon from '@/assets/svg/settings/light-mode.svg';

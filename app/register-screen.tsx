@@ -1,9 +1,9 @@
 import { View, Text, SafeAreaView, ScrollView, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
-import FormField from '@/components/form/FormField';
-import Button from '@/components/form/Button';
-import BirthdayGenderForm from '@/components/form/BirthdayGenderForm';
+import FormField from '@/components/form/form-field';
+import Button from '@/components/form/button';
+import BirthdayGenderForm from '@/components/form/birthday-gender-form';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

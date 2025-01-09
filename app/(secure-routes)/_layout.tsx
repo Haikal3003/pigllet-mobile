@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
-import BottomTabNavigatorIcon from '@/components/BottomTabNavigatorIcon';
+import BottomTabNavigatorIcon from '@/components/bpttpm-tab-navigator';
 
 const tabsMenu = [
   {name: 'index', title: 'Home', iconType: 'home'},

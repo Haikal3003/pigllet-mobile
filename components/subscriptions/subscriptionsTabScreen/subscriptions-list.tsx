@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import FilterIcon from '@/assets/svg/filter.svg';
-import SubscriptionsCard from './SubscriptionsCard';
+import SubscriptionsCard from './subscriptions-card';
 
 type Subscriptions = {id: number, title: string, due_date: string, is_paid: boolean, total: number}[]
 

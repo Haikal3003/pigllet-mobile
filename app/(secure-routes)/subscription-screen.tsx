@@ -3,7 +3,7 @@ import { View, ScrollView } from 'react-native';
 
 import AnalyticsTabScreen from '@/components/subscriptions/analyticsTabScreen';
 import SubscriptionTabScreen from '@/components/subscriptions/subscriptionsTabScreen';
-import TabButton from '@/components/HeaderTabButton';
+import TabButton from '@/components/header-tab-button';
 
 export default function SubscriptionScreen() {
   const [selectedTab, setSelectedTab] = useState<string>('subscriptions');

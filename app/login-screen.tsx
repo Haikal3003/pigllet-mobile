@@ -1,8 +1,8 @@
 import { View, Text, SafeAreaView, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
-import FormField from '@/components/form/FormField';
-import Button from '@/components/form/Button';
+import FormField from '@/components/form/form-field';
+import Button from '@/components/form/button';
 
 const LoginScreen = () => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import BarChart from '../BarChart';
+import BarChart from '../barcharts';
 import CalendarIcon from '@/assets/svg/calendar.svg';
 
 interface ExpenseProps {

@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import {View, ScrollView} from 'react-native';
 
-import ExpenseDaily from '@/components/expense/ExpenseDaily';
-import ExpenseMonthly from '@/components/expense/ExpenseMonthly';
-import ExpenseYearly from '@/components/expense/ExpenseYearly';
-import HeaderTabButton from '@/components/HeaderTabButton';
+import ExpenseDaily from '@/components/expense/expense-daily';
+import ExpenseMonthly from '@/components/expense/expense-monthly';
+import ExpenseYearly from '@/components/expense/expense-yearly';
+import HeaderTabButton from '@/components/header-tab-button';
 
 export default function ExpenseScreen() {
   const [selectedTab, setSelectedTab] = useState<string>('daily');
