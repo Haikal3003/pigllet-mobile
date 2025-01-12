@@ -3,7 +3,7 @@ import { Tabs } from 'expo-router';
 import BottomTabNavigatorIcon from '@/components/bottom-tab-navigator';
 
 const tabsMenu = [
-	{ name: 'index', title: 'Home', iconType: 'home' },
+	{ name: 'home-screen', title: 'Home', iconType: 'home' },
 	{ name: 'expense-screen', title: 'Expense', iconType: 'expense' },
 	{
 		name: 'subscription-screen',

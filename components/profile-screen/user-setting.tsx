@@ -35,7 +35,7 @@ const UserSettings = ({ title, options }: UserSettingsProps) => {
 								</View>
 
 								<View className="flex-row items-center ">
-									<Text className="text-slate-400">{option.status}</Text>
+									<Text className="text-slate-600">{option.status}</Text>
 									<ArrowRightIcon />
 								</View>
 							</View>

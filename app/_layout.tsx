@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
-import { AuthContext, AuthProvider } from '@/context/AuthProvider';
-import React, { useContext } from 'react';
+import { AuthProvider } from '@/context/AuthProvider';
+
 import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
 
@@ -18,24 +18,11 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
 	return (
 		<AuthProvider>
-			<RootLayoutNav />
+			<Stack screenOptions={{ headerShown: false }}>
+				<Stack.Screen name="index" />
+				<Stack.Screen name="(root)" />
+				<Stack.Screen name="(auth)" />
+			</Stack>
 		</AuthProvider>
-	);
-}
-
-function RootLayoutNav() {
-	const authContext = useContext(AuthContext);
-
-	return (
-		<Stack screenOptions={{ headerShown: false }}>
-			{authContext?.userSession ? (
-				<Stack.Screen name="(secure-routes)" />
-			) : (
-				<>
-					<Stack.Screen name="login-screen" />
-					<Stack.Screen name="register-screen" />
-				</>
-			)}
-		</Stack>
 	);
 }

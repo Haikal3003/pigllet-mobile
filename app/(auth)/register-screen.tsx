@@ -59,60 +59,51 @@ const RegisterScreen = () => {
 	};
 
 	return (
-		<SafeAreaView className="flex-1 bg-white">
-			<ScrollView
-				showsVerticalScrollIndicator={false}
-				contentContainerStyle={{ paddingBottom: 60 }}
-				className="pt-8 px-5"
-			>
-				<Text
-					style={{
-						fontSize: 24,
-						fontFamily: 'Inter',
-						marginBottom: 8,
-						textAlign: 'center',
-					}}
-				>
-					Register Account
-				</Text>
+		<ScrollView
+			showsVerticalScrollIndicator={false}
+			contentContainerStyle={{ paddingBottom: 80 }}
+			className="pt-16 px-5"
+		>
+			<Text className="font-bold text-center mb-8 text-xl">
+				Register Account
+			</Text>
 
-				<FormField
-					label="Full Name"
-					value={form.name}
-					onChangeText={(value) => handleInputOnChange('name', value)}
-					placeholder="Enter your full name..."
-				/>
-				<FormField
-					label="Username"
-					value={form.username}
-					onChangeText={(value) => handleInputOnChange('username', value)}
-					placeholder="Enter your username..."
-				/>
-				<FormField
-					label="Email"
-					value={form.email}
-					onChangeText={(value) => handleInputOnChange('email', value)}
-					placeholder="Enter your email..."
-					keyboardType="email-address"
-				/>
-				<FormField
-					label="Job"
-					value={form.job}
-					onChangeText={(value) => handleInputOnChange('job', value)}
-					placeholder="Enter your job..."
-				/>
-				<BirthdayGenderForm />
-				<FormField
-					label="Password"
-					value={form.password}
-					onChangeText={(value) => handleInputOnChange('password', value)}
-					placeholder="Enter your password..."
-					secureTextEntry
-				/>
+			<FormField
+				label="Full Name"
+				value={form.name}
+				onChangeText={(value) => handleInputOnChange('name', value)}
+				placeholder="Enter your full name..."
+			/>
+			<FormField
+				label="Username"
+				value={form.username}
+				onChangeText={(value) => handleInputOnChange('username', value)}
+				placeholder="Enter your username..."
+			/>
+			<FormField
+				label="Email"
+				value={form.email}
+				onChangeText={(value) => handleInputOnChange('email', value)}
+				placeholder="Enter your email..."
+				keyboardType="email-address"
+			/>
+			<FormField
+				label="Job"
+				value={form.job}
+				onChangeText={(value) => handleInputOnChange('job', value)}
+				placeholder="Enter your job..."
+			/>
+			<BirthdayGenderForm />
+			<FormField
+				label="Password"
+				value={form.password}
+				onChangeText={(value) => handleInputOnChange('password', value)}
+				placeholder="Enter your password..."
+				secureTextEntry
+			/>
 
-				<Button type="main" text="Register" onPress={handleRegister} />
-			</ScrollView>
-		</SafeAreaView>
+			<Button type="main" text="Register" onPress={handleRegister} />
+		</ScrollView>
 	);
 };
 
