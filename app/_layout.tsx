@@ -1,7 +1,6 @@
 import { Stack } from 'expo-router';
 import { AuthContext, AuthProvider } from '@/context/AuthProvider';
-import React, { useContext, useEffect } from 'react';
-import { useFonts } from 'expo-font';
+import React, { useContext } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
 
@@ -17,22 +16,6 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-	const [fontsLoaded, fontsError] = useFonts({
-		inter: require('../assets/fonts/geist.ttf'),
-	});
-
-	useEffect(() => {
-		if (fontsLoaded) {
-			SplashScreen.hideAsync();
-		}
-
-		if (fontsError) throw fontsError;
-	}, [fontsError, fontsLoaded]);
-
-	if (!fontsLoaded) {
-		return null;
-	}
-
 	return (
 		<AuthProvider>
 			<RootLayoutNav />
@@ -46,7 +29,7 @@ function RootLayoutNav() {
 	return (
 		<Stack screenOptions={{ headerShown: false }}>
 			{authContext?.userSession ? (
-				<Stack.Screen name="(tabs)" />
+				<Stack.Screen name="(secure-routes)" />
 			) : (
 				<>
 					<Stack.Screen name="login-screen" />
