@@ -15,18 +15,22 @@ const SubscriptionsCard = (props: Subscription) => {
 	return (
 		<View className="flex-row justify-between gap-6 items-start pt-3 pb-3">
 			<View>
-				<Text className="text-base text-slate-900">{props.title}</Text>
-				<Text className="text-sm text-slate-600">Due Tues, 12 Nov 2024</Text>
+				<Text className="text-lg text-slate-900 tracking-tight">
+					{props.title}
+				</Text>
+				<Text className="text-slate-600 tracking-tight">
+					Due Tues, 12 Nov 2024
+				</Text>
 			</View>
 
 			<View className="items-end">
 				<Text
-					className={` text-xs rounded-full px-3 p-[2px] text-white ${labelColor}`}
+					className={`tracking-tight text-xs rounded-full px-3 p-[2px] text-white ${labelColor}`}
 				>
 					{labelText}
 				</Text>
 
-				<Text className="text-base">
+				<Text className="text-lg tracking-tight">
 					Rp {props.total.toLocaleString('id-ID')}
 				</Text>
 			</View>

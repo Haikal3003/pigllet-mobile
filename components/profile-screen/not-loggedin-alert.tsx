@@ -5,15 +5,16 @@ import AccountCircleIcon from '@/assets/svg/settings/account-circle.svg';
 const NotLoggedInAllert = () => {
 	return (
 		<View className="relative w-full bg-red-100 rounded-2xl border border-red-200 p-4">
-			<View className="flex-row w-full ">
+			<View className="flex-row w-full items-start">
 				<AccountCircleIcon />
-				<View className="pl-2 w-[90%] relative ">
-					<Text className="text-base text-red-900 mb-2">
+
+				<View className="pl-2 w-[90%] relative">
+					<Text className="text-lg text-red-900 tracking-tight">
 						You are not logged in!
 					</Text>
-					<Text className="text-base text-black/50">
-						You are not logged in hence your cloud sync is paused. You can log
-						in by clicking on your profile picture.
+
+					<Text className="text-slate-600 tracking-tight">
+						You need to login to use all the feature in this application.
 					</Text>
 				</View>
 			</View>

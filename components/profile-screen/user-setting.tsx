@@ -15,7 +15,7 @@ interface UserSettingsProps {
 const UserSettings = ({ title, options }: UserSettingsProps) => {
 	return (
 		<View>
-			<Text className="text-base mb-2">{title}</Text>
+			<Text className="text-lg mb-2">{title}</Text>
 
 			<View className="w-full h-auto bg-white rounded-2xl border border-slate-200">
 				{options.map((option, i) => {
@@ -29,13 +29,15 @@ const UserSettings = ({ title, options }: UserSettingsProps) => {
 							>
 								<View className="flex-row items-center">
 									{option.icon}
-									<Text className="ml-3 text-base text-gray-900">
+									<Text className="ml-3 text-lg text-slate-900 tracking-tight">
 										{option.label}
 									</Text>
 								</View>
 
 								<View className="flex-row items-center ">
-									<Text className="text-slate-600">{option.status}</Text>
+									<Text className="text-slate-600 tracking-tight">
+										{option.status}
+									</Text>
 									<ArrowRightIcon />
 								</View>
 							</View>

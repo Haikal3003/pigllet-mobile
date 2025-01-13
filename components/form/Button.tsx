@@ -1,10 +1,4 @@
-import {
-	View,
-	Text,
-	TouchableOpacity,
-	TouchableOpacityProps,
-} from 'react-native';
-import React from 'react';
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 interface ButtonProps extends TouchableOpacityProps {
 	text: string;
@@ -24,7 +18,7 @@ const Button = ({ text, onPress, type, ...props }: ButtonProps) => {
 			{...props}
 		>
 			<Text
-				className={`text-base ${
+				className={`text-lg tracking-tight ${
 					type === 'main' ? 'text-white' : 'text-slate-900'
 				}`}
 			>

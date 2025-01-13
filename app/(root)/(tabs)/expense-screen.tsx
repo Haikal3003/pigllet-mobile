@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { View, ScrollView, StatusBar } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 import ExpenseDaily from '@/components/expense-screen/expense-daily';
 import ExpenseMonthly from '@/components/expense-screen/expense-monthly';
 import ExpenseYearly from '@/components/expense-screen/expense-yearly';
-import HeaderTabButton from '@/components/header-tab-button';
+import TopTabNavigation from '@/components/top-tab-navigation';
 
 export default function ExpenseScreen() {
 	const [selectedTab, setSelectedTab] = useState<string>('daily');
@@ -23,27 +23,31 @@ export default function ExpenseScreen() {
 		}
 	};
 
+	const tabs = [
+		{
+			label: 'daily',
+			text: 'Daily',
+			selectedTab: selectedTab,
+			setSelectedTab: setSelectedTab,
+		},
+		{
+			label: 'monthly',
+			text: 'Monthly',
+			selectedTab: selectedTab,
+			setSelectedTab: setSelectedTab,
+		},
+		{
+			label: 'yearly',
+			text: 'Yearly',
+			selectedTab: selectedTab,
+			setSelectedTab: setSelectedTab,
+		},
+	];
+
 	return (
-		<ScrollView className="flex-1 w-full bg-white px-6 pt-16 pb-10">
-			<View className="flex-row justify-between border border-red-100 p-1 rounded-xl mb-8 bg-slate-100">
-				<HeaderTabButton
-					label="daily"
-					text="Daily"
-					selectedTab={selectedTab}
-					setSelectedTab={setSelectedTab}
-				/>
-				<HeaderTabButton
-					label="monthly"
-					text="Monthly"
-					selectedTab={selectedTab}
-					setSelectedTab={setSelectedTab}
-				/>
-				<HeaderTabButton
-					label="yearly"
-					text="Yearly"
-					selectedTab={selectedTab}
-					setSelectedTab={setSelectedTab}
-				/>
+		<ScrollView className="flex-1 h-full bg-white">
+			<View className="pt-16 px-6">
+				<TopTabNavigation tabs={tabs as any} />
 			</View>
 
 			{renderContent()}

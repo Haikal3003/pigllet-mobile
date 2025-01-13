@@ -46,7 +46,7 @@ const SubscriptionsList = () => {
 	return (
 		<View className="mt-8">
 			<View className="flex-row justify-between items-center">
-				<Text className="text-base" style={{ fontWeight: 800 }}>
+				<Text className="text-lg" style={{ fontWeight: 800 }}>
 					Subscriptions
 				</Text>
 

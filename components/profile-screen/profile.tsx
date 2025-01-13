@@ -10,9 +10,12 @@ const Profile = () => {
 				<View className="w-16 h-16 bg-slate-100 rounded-full items-center justify-center">
 					<ProfileIcon />
 				</View>
+
 				<View className="pl-4">
-					<Text className="text-lg">John Doe</Text>
-					<Text className="text-sm text-slate-400">johndoe@gmail.com</Text>
+					<Text className="text-xl tracking-tight">John Doe</Text>
+					<Text className="text-slate-600 tracking-tight">
+						johndoe@gmail.com
+					</Text>
 				</View>
 			</View>
 

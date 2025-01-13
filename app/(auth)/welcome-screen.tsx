@@ -72,11 +72,11 @@ export default function WelcomeScreen() {
 							resizeMode="contain"
 						/>
 
-						<Text className="text-[#FF4863] text-4xl text-center leading-[32px] font-bold mb-2">
+						<Text className="text-[#FF4863] text-4xl text-center leading-[32px] tracking-tighter font-bold mb-2">
 							{item.title}
 						</Text>
 
-						<Text className="text-center text-slate-900 text-xl">
+						<Text className="text-center text-slate-900 text-xl tracking-tight">
 							{item.description}
 						</Text>
 					</View>

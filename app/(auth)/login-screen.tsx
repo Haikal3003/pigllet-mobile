@@ -19,7 +19,9 @@ const LoginScreen = () => {
 			contentContainerStyle={{ paddingBottom: 80 }}
 			className="pt-14 px-6"
 		>
-			<Text className="text-2xl mb-8 text-center">Login</Text>
+			<Text className="font-bold text-center mb-8 text-2xl text-slate-900">
+				Login
+			</Text>
 
 			<FormField
 				label="Email"

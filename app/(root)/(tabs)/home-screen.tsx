@@ -10,9 +10,6 @@ export default function HomeScreen() {
 		<ScrollView
 			scrollEnabled={true}
 			showsVerticalScrollIndicator={false}
-			contentContainerStyle={{
-				paddingBottom: 80,
-			}}
 			className="w-full h-full bg-red-100/10"
 		>
 			<Greeting />

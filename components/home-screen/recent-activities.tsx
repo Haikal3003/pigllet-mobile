@@ -6,21 +6,28 @@ export default function RecentActivities() {
 	return (
 		<View
 			id="activities"
-			className="relative w-full h-full bg-white"
+			className="flex-1 w-full pb-8 bg-white"
 			style={{ paddingTop: 16 }}
 		>
 			<View className="flex-row justify-between items-center px-6">
-				<Text className="text-slate-800" style={{ fontWeight: 800 }}>
+				<Text
+					className="text-slate-800 text-lg tracking-tight"
+					style={{ fontWeight: 800 }}
+				>
 					Recent Activity
 				</Text>
 
 				<TouchableOpacity className="flex-row items-center">
-					<Text className="text-slate-600">Details</Text>
+					<Text className="text-slate-600 text-lg tracking-tight">Details</Text>
 					<ArrowRightIcon />
 				</TouchableOpacity>
 			</View>
 
 			<View id="activity" className="flex-col" style={{ marginTop: 8 }}>
+				<ActivityCard type="expense" />
+				<ActivityCard type="expense" />
+				<ActivityCard type="expense" />
+				<ActivityCard type="expense" />
 				<ActivityCard type="expense" />
 				<ActivityCard type="expense" />
 				<ActivityCard type="expense" />

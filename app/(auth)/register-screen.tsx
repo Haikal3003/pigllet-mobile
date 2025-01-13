@@ -62,9 +62,9 @@ const RegisterScreen = () => {
 		<ScrollView
 			showsVerticalScrollIndicator={false}
 			contentContainerStyle={{ paddingBottom: 80 }}
-			className="pt-16 px-5"
+			className="pt-16 px-10"
 		>
-			<Text className="font-bold text-center mb-8 text-xl">
+			<Text className="font-bold text-center mb-8 text-2xl text-slate-900">
 				Register Account
 			</Text>
 
@@ -103,6 +103,11 @@ const RegisterScreen = () => {
 			/>
 
 			<Button type="main" text="Register" onPress={handleRegister} />
+			<Button
+				type="secondary"
+				text="I already have an account"
+				onPress={() => router.replace('/(auth)/login-screen')}
+			/>
 		</ScrollView>
 	);
 };

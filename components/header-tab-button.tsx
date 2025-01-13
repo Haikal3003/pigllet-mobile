@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from 'react-native';
+import { Text, Pressable } from 'react-native';
 import React from 'react';
 
 interface HeaderTabButtonProps {
@@ -24,7 +24,7 @@ const HeaderTabButton = ({
 			onPress={() => setSelectedTab(label)}
 		>
 			<Text
-				className={`text-center ${
+				className={`text-center tracking-tight text-lg ${
 					selectedTab === label ? 'text-white' : 'text-slate-900'
 				}`}
 			>

@@ -1,26 +1,45 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
 import ArrowDropdownIcon from '@/assets/svg/arrow/arrow-drop-down.svg';
 import ArrowDropupIcon from '@/assets/svg/arrow/arrow-drop-up.svg';
 
 const SummaryExpense = () => {
-	return (
-		<View className="flex-row justify-between items-center">
-			<Pressable className="flex-1 flex-row border-">
-				<ArrowDropupIcon />
-				<View>
-					<Text className="text-sm text-slate-400">Today income</Text>
-					<Text className="text-base">Rp 6,000,000</Text>
-				</View>
-			</Pressable>
+	const totalIncome = 125700;
+	const totalExpense = 25542;
 
-			<Pressable className="flex-1 flex-row">
-				<ArrowDropdownIcon />
+	return (
+		<View className="flex-row justify-between items-center gap-2 py-8 px-6">
+			<View className="flex-1 flex-row bg-[#9DEE77] p-2 rounded-lg h-20">
+				<ArrowDropupIcon />
+
 				<View>
-					<Text className="text-sm text-slate-400">Today expense</Text>
-					<Text className="text-base">- Rp 4,365,000</Text>
+					<Text className="text-[#033F00]">Today incomes</Text>
+
+					<Text
+						className={`text-[#033F00] ${
+							totalIncome >= 1000000000 ? 'text-base' : 'text-xl'
+						}`}
+					>
+						Rp {totalIncome.toLocaleString('id-ID')}
+					</Text>
 				</View>
-			</Pressable>
+			</View>
+
+			<View className="flex-1 flex-row bg-[#FFC5CE] p-2 rounded-lg h-20">
+				<ArrowDropdownIcon />
+
+				<View>
+					<Text className="text-[#9C041E]">Today expenses</Text>
+
+					<Text
+						className={`text-[#9C041E] ${
+							totalExpense > 1000000000 ? 'text-base' : 'text-xl'
+						}`}
+					>
+						Rp {totalExpense.toLocaleString('id-ID')}
+					</Text>
+				</View>
+			</View>
 		</View>
 	);
 };
