@@ -4,9 +4,9 @@ import BottomTabNavigatorIcon from '@/components/bottom-tab-navigator';
 
 const tabsMenu = [
 	{ name: 'home-screen', title: 'Home', iconType: 'home' },
-	{ name: 'expense-screen', title: 'Expense', iconType: 'expense' },
+	{ name: 'expense', title: 'Expense', iconType: 'expense' },
 	{
-		name: 'subscription-screen',
+		name: 'subscription',
 		title: 'Subscriptions',
 		iconType: 'subscriptions',
 	},

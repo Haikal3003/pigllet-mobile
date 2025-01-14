@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 
-import MonthPicker from '@/components/subscriptions-screen/subscriptionsTabScreen/month-picker';
 import AnalyticsTabScreen from '@/components/subscriptions-screen/analyticsTabScreen';
 import SubscriptionTabScreen from '@/components/subscriptions-screen/subscriptionsTabScreen';
 import TopTabNavigation from '@/components/top-tab-navigation';
+import CustomDatePicker from '@/components/custom-date-picker';
 
 export default function SubscriptionScreen() {
 	const [selectedTab, setSelectedTab] = useState<'subscriptions' | 'analytics'>(
@@ -29,7 +29,7 @@ export default function SubscriptionScreen() {
 	return (
 		<ScrollView
 			showsVerticalScrollIndicator={false}
-			contentContainerStyle={{ paddingBottom: 80 }}
+			contentContainerStyle={{ paddingBottom: 150 }}
 			className="flex-1 w-full bg-white px-6 pt-16"
 		>
 			<TopTabNavigation tabs={tabs as any} />
@@ -44,26 +44,37 @@ interface PageToRender {
 }
 
 function PageToRender({ identifier }: PageToRender) {
-	const date = new Date();
-	const currentYear = date.getFullYear();
-	const currentMonth = date.getMonth();
-
-	const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-	const [selectedYear, _] = useState(currentYear);
+	const [currentDate, setCurrentDate] = useState<Date>(new Date());
+	const currentMonth = currentDate.getMonth();
+	const currentYear = currentDate.getFullYear();
 
 	return (
 		<View>
-			<MonthPicker
-				selectedMonth={selectedMonth}
-				selectedYear={selectedYear}
-				setSelectedMonth={setSelectedMonth}
-			/>
+			<View className="flex-row justify-between mb-8">
+				<View>
+					<Text className="text-base text-slate-600 tracking-tight">
+						Your total this month
+					</Text>
+
+					<Text
+						className="text-2xl text-[#FF2C4A] tracking-tight"
+						style={{ fontWeight: 800 }}
+					>
+						Rp 605,000
+					</Text>
+				</View>
+
+				<CustomDatePicker
+					displayDate={true}
+					currentDate={currentDate}
+					setDate={setCurrentDate}
+				/>
+			</View>
 
 			{identifier === 'subscriptions' ? (
 				<SubscriptionTabScreen
-					selectedMonth={selectedMonth}
-					selectedYear={selectedYear}
-					setSelectedMonth={setSelectedMonth}
+					selectedMonth={currentMonth}
+					selectedYear={currentYear}
 				/>
 			) : (
 				<AnalyticsTabScreen />

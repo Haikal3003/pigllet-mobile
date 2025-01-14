@@ -1,33 +1,79 @@
-import { View, Text, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+
 import BarChart from '../barcharts';
-import ArrowDownIcon from '@/assets/svg/arrow/keyboard-arrow-down.svg';
+import ActivityCard from '../home-screen/activity-card';
+import SummaryExpense from './summary-expense';
+import ExpenseByCategory from './expense-by-category';
+import CustomDatePicker from '../custom-date-picker';
+
+import { months } from '@/constants/months';
+import { ChartData } from '@/types/type';
 
 interface ExpenseProps {
 	selectedTab: string;
 }
 
+const data: ChartData = {
+	labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+	datasets: [
+		{
+			data: [
+				125000, 100000, 250000, 50000, 125000, 100000, 250000, 50000, 125000,
+				100000, 250000, 50000,
+			],
+		},
+	],
+};
+
 const ExpenseMonthly = ({ selectedTab }: ExpenseProps) => {
+	const [currentDate, setCurrentDate] = useState(new Date());
+
 	return (
 		<View>
-			<View>
-				<View>
-					<Text className="text-slate-400 text-base">Showing expense for</Text>
-					<Text className="text-2xl">November, 2024</Text>
+			<View className="mb-8 flex-row justify-between px-6">
+				<View className="w-[70%]">
+					<Text className="text-slate-600 text-base">Showing expense for</Text>
+					<Text className="text-2xl text-[#FF2C4A]" style={{ fontWeight: 800 }}>
+						{months[currentDate.getMonth()]}, {currentDate.getFullYear()}
+					</Text>
 				</View>
-				<View className="flex-row justify-end gap-2 mt-2">
-					<TouchableOpacity className="py-2 px-6 border border-slate-200 rounded-xl flex-row justify-center items-center place-content-end">
-						<Text className="text-slate-400 text-sm">November</Text>
-						<ArrowDownIcon />
-					</TouchableOpacity>
 
-					<TouchableOpacity className="py-2 px-6 border border-slate-200 rounded-xl flex-row justify-center items-center place-content-end">
-						<Text className="text-slate-400 text-sm">2024</Text>
-						<ArrowDownIcon />
-					</TouchableOpacity>
+				<CustomDatePicker
+					displayDate={false}
+					currentDate={currentDate}
+					setDate={setCurrentDate}
+					maximumDate={new Date()}
+				/>
+			</View>
+
+			<BarChart currentDate={currentDate} data={data} />
+
+			<SummaryExpense reviews="monthly" />
+
+			<ExpenseByCategory />
+
+			<View className="flex-1 w-full pt-6 bg-white">
+				<View className="flex-row justify-between items-center px-6">
+					<Text
+						className="text-slate-900 font-bold text-lg tracking-tight"
+						style={{ fontWeight: 800 }}
+					>
+						Recent Activity
+					</Text>
+				</View>
+
+				<View id="activity" className="flex-col" style={{ marginTop: 8 }}>
+					<ActivityCard type="expense" />
+					<ActivityCard type="expense" />
+					<ActivityCard type="expense" />
+					<ActivityCard type="expense" />
+					<ActivityCard type="expense" />
+					<ActivityCard type="expense" />
+					<ActivityCard type="expense" />
+					<ActivityCard type="expense" />
 				</View>
 			</View>
-			<BarChart selectedTab={selectedTab} />
 		</View>
 	);
 };

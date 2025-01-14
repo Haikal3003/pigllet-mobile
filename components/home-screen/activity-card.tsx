@@ -19,7 +19,7 @@ export default function ActivityCard({}: ActivityCard) {
 
 			<View className="items-end gap-1">
 				<Text className="text-lg tracking-tight">- Rp 250.000</Text>
-				<Text className=" text-sm text-slate-600 tracking-tight">Transfer</Text>
+				<Text className=" text-sm text-slate-600 tracking-tight">Spending</Text>
 
 				<Text className="text-xs text-white bg-red-400 p-1 px-2 rounded-full tracking-tight">
 					Transportation

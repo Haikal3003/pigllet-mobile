@@ -45,12 +45,16 @@ export default function ExpenseScreen() {
 	];
 
 	return (
-		<ScrollView className="flex-1 h-full bg-white">
-			<View className="pt-16 px-6">
+		<ScrollView
+			className="flex-1 h-full bg-white"
+			contentContainerStyle={{ paddingBottom: 100 }}
+			showsVerticalScrollIndicator={false}
+		>
+			{/* <View className="pt-16 px-6">
 				<TopTabNavigation tabs={tabs as any} />
-			</View>
+			</View> */}
 
-			{renderContent()}
+			<ExpenseDaily selectedTab={selectedTab} />
 		</ScrollView>
 	);
 }

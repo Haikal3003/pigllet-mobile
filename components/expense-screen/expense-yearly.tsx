@@ -1,28 +1,33 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import BarChart from '../barcharts';
 import ArrowDownIcon from '@/assets/svg/arrow/keyboard-arrow-down.svg';
+import { months } from '@/constants/months';
+import CustomDatePicker from '../custom-date-picker';
 
 interface ExpenseProps {
 	selectedTab: string;
 }
 
 const ExpenseYearly = ({ selectedTab }: ExpenseProps) => {
+	const [currentDate, setCurrentDate] = useState(new Date());
+
 	return (
 		<View>
-			<View>
-				<View className="flex-row justify-between items-center gap-2">
-					<View>
-						<Text className="text-slate-400 text-base">Your analytics for</Text>
-						<Text className="text-2xl">2024</Text>
-					</View>
-					<View className="mt-2">
-						<TouchableOpacity className="py-2 px-6 border border-slate-200 rounded-xl flex-row justify-center items-center place-content-end">
-							<Text className="text-slate-400 text-sm">2024</Text>
-							<ArrowDownIcon />
-						</TouchableOpacity>
-					</View>
+			<View className="mb-8 flex-row justify-between px-6">
+				<View className="w-[70%]">
+					<Text className="text-slate-600 text-base">Showing expense for</Text>
+					<Text className="text-2xl text-[#FF2C4A]" style={{ fontWeight: 800 }}>
+						{currentDate.getFullYear()}
+					</Text>
 				</View>
+
+				<CustomDatePicker
+					displayDate={false}
+					currentDate={currentDate}
+					setDate={setCurrentDate}
+					maximumDate={new Date()}
+				/>
 			</View>
 		</View>
 	);

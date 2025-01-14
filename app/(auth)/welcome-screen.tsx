@@ -39,7 +39,7 @@ const onboarding: OnboardningSlide[] = [
 
 export default function WelcomeScreen() {
 	const swiperRef = useRef<Swiper>(null);
-	const [_, setActiveIndex] = useState<number>(0);
+	const [activeIndex, setActiveIndex] = useState<number>(0);
 
 	return (
 		<View className="h-full pt-12 pb-32 justify-between bg-white">
@@ -53,6 +53,7 @@ export default function WelcomeScreen() {
 			<Swiper
 				ref={swiperRef}
 				loop={false}
+				index={activeIndex}
 				dot={
 					<View className="w-[32px] h-[4px] mx-1 bg-slate-200 rounded-full" />
 				}
@@ -84,11 +85,19 @@ export default function WelcomeScreen() {
 			</Swiper>
 
 			<View className="px-6">
-				<Button
-					text="Create an account"
-					type="main"
-					onPress={() => router.replace('/(auth)/register-screen')}
-				/>
+				{activeIndex < onboarding.length - 1 ? (
+					<Button
+						text="Next"
+						type="main"
+						onPress={() => setActiveIndex((lastIndex) => lastIndex + 1)}
+					/>
+				) : (
+					<Button
+						text="Create an account"
+						type="main"
+						onPress={() => router.replace('/(auth)/register-screen')}
+					/>
+				)}
 			</View>
 		</View>
 	);

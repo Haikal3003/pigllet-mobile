@@ -7,7 +7,6 @@ import SubscriptionsList from './subscriptions-list';
 interface SubscriptionsTabScreen {
 	selectedYear: number;
 	selectedMonth: number;
-	setSelectedMonth: Dispatch<SetStateAction<number>>;
 }
 
 export default function SubscriptionTabScreen({

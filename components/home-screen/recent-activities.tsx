@@ -11,7 +11,7 @@ export default function RecentActivities() {
 		>
 			<View className="flex-row justify-between items-center px-6">
 				<Text
-					className="text-slate-800 text-lg tracking-tight"
+					className="text-slate-900 font-bold text-lg tracking-tight"
 					style={{ fontWeight: 800 }}
 				>
 					Recent Activity
