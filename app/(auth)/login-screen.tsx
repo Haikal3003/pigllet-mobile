@@ -1,13 +1,7 @@
-import {
-	View,
-	Text,
-	SafeAreaView,
-	ScrollView,
-	TextInput,
-	TouchableOpacity,
-} from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import React from 'react';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
+
 import FormField from '@/components/form/form-field';
 import Button from '@/components/form/button';
 
@@ -17,8 +11,14 @@ const LoginScreen = () => {
 		<ScrollView
 			showsVerticalScrollIndicator={false}
 			contentContainerStyle={{ paddingBottom: 80 }}
-			className="pt-14 px-6"
+			className="pt-14 px-10"
 		>
+			<View className="items-end justify-end mb-20">
+				<Link href={'/(root)/(tabs)/home-screen'} className="w-36 text-right">
+					<Text>Skip this process</Text>
+				</Link>
+			</View>
+
 			<Text className="font-bold text-center mb-8 text-2xl text-slate-900">
 				Login
 			</Text>
