@@ -10,10 +10,6 @@ import ExpenseByCategory from './expense-by-category';
 import { months } from '@/constants/months';
 import ActivityCard from '../home-screen/activity-card';
 
-interface ExpenseProps {
-	selectedTab: string;
-}
-
 const data: ChartData = {
 	labels: [
 		'1',
@@ -43,7 +39,7 @@ const data: ChartData = {
 	],
 };
 
-export default function ExpenseDaily({ selectedTab }: ExpenseProps) {
+export default function ExpenseDaily() {
 	const [currentDate, setCurrentDate] = useState(new Date());
 
 	return (
@@ -67,7 +63,7 @@ export default function ExpenseDaily({ selectedTab }: ExpenseProps) {
 
 			<BarChart data={data} currentDate={currentDate} />
 
-			<SummaryExpense />
+			<SummaryExpense reviews="monthly" />
 
 			<ExpenseByCategory />
 

@@ -31,7 +31,7 @@ export default function SummaryExpense({ reviews }: SummaryExpense) {
 					<ArrowDropupIcon />
 
 					<View>
-						<Text className="text-[#033F00] text-sm">{label} incomes</Text>
+						<Text className="text-[#033F00] text-sm">{label} income</Text>
 
 						<Text
 							className={`text-[#033F00] ${
@@ -47,7 +47,7 @@ export default function SummaryExpense({ reviews }: SummaryExpense) {
 					<ArrowDropdownIcon />
 
 					<View>
-						<Text className="text-[#9C041E] text-sm">{label} expenses</Text>
+						<Text className="text-[#9C041E] text-sm">{label} spending</Text>
 
 						<Text
 							className={`text-[#9C041E] ${

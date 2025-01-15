@@ -4,12 +4,14 @@ import { Text, TouchableOpacity } from 'react-native';
 import CalendarIcon from '@/assets/svg/calendar.svg';
 import RNDateTimePicker from '@react-native-community/datetimepicker';
 import { months } from '@/constants/months';
+import { days } from '@/constants/days';
 
 interface CustomDatePicker {
 	currentDate: Date;
 	setDate: Dispatch<SetStateAction<Date>>;
 	displayDate: boolean;
 	maximumDate?: Date;
+	displayDay?: boolean;
 }
 
 export default function CustomDatePicker({
@@ -17,6 +19,7 @@ export default function CustomDatePicker({
 	setDate,
 	displayDate,
 	maximumDate,
+	displayDay,
 }: CustomDatePicker) {
 	const [open, setOpen] = useState<boolean>(false);
 
@@ -25,9 +28,11 @@ export default function CustomDatePicker({
 		setDate(newDate);
 	}
 
-	const dateString = `${
-		months[currentDate.getMonth()]
-	}, ${currentDate.getFullYear()}`;
+	const dateString = displayDay
+		? `${days[currentDate.getDay()]} ${currentDate.getDate()} ${
+				months[currentDate.getMonth()]
+		  }, ${currentDate.getFullYear()}`
+		: `${months[currentDate.getMonth()]}, ${currentDate.getFullYear()}`;
 
 	return (
 		<>
