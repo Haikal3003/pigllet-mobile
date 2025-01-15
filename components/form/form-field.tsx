@@ -20,10 +20,11 @@ const FormField: React.FC<FormFieldProps> = ({ label, ...props }) => {
 
 	return (
 		<View className="mb-4">
-			<Text className="text-base mb-2">{label}</Text>
+			<Text className="mb-2 tracking-tight text-[#777]">{label}</Text>
+
 			<View>
 				<TextInput
-					className="border border-slate-300 rounded-lg p-2 text-base"
+					className="border bg-slate-100 border-slate-300 rounded-lg p-2 text-base"
 					secureTextEntry={isPasswordField && !isPasswordVisible}
 					{...props}
 				/>

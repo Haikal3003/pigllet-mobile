@@ -12,7 +12,7 @@ export default function TabLayout() {
 			<Slot />
 
 			<TouchableOpacity
-				onPress={() => router.push('/expense/create-expense-screen')}
+				onPress={() => router.push('/create-expense-form-screen')}
 				className={`absolute bottom-6 right-6 w-16 h-16 items-center justify-center bg-[#FF2C4A] rounded-xl ${
 					pathname === '/expense/create-expense-screen' ? 'hidden' : ''
 				}`}
