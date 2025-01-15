@@ -1,4 +1,4 @@
-import Button from '@/components/form/button';
+import Button from '@/components/form/Button';
 import { router } from 'expo-router';
 import { useRef, useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
@@ -59,7 +59,7 @@ export default function WelcomeScreen() {
 				activeDot={
 					<View className="w-[32px] h-[4px] mx-1 bg-[#FF4863] rounded-full" />
 				}
-				onIndexChanged={(index) => setActiveIndex(index)}
+				onIndexChanged={(index: any) => setActiveIndex(index)}
 			>
 				{onboarding.map((item) => (
 					<View

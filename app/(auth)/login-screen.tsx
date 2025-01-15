@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import { useRouter } from 'expo-router';
 import FormField from '@/components/form/form-field';
-import Button from '@/components/form/button';
+import Button from '@/components/form/Button';
 
 const LoginScreen = () => {
 	const router = useRouter();
@@ -34,12 +34,12 @@ const LoginScreen = () => {
 			<Button
 				type="main"
 				text="Login"
-				onPress={() => router.push('/register-screen')}
+				onPress={() => router.push('/(auth)/register-screen')}
 			/>
 			<Button
 				type="secondary"
 				text="Create an account"
-				onPress={() => router.push('/register-screen')}
+				onPress={() => router.push('/(auth)/register-screen')}
 			/>
 		</ScrollView>
 	);

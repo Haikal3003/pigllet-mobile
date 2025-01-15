@@ -6,6 +6,8 @@ export default function Layout() {
 			<Stack.Screen name="welcome-screen" />
 			<Stack.Screen name="register-screen" />
 			<Stack.Screen name="login-screen" />
+			<Stack.Screen name="verify-verification-screen" />
+			<Stack.Screen name="success-verification-screen" />
 		</Stack>
 	);
 }

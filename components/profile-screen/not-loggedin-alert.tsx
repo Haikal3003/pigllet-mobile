@@ -1,10 +1,16 @@
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import React from 'react';
 import AccountCircleIcon from '@/assets/svg/settings/account-circle.svg';
+import { useRouter } from 'expo-router';
 
 const NotLoggedInAllert = () => {
+	const router = useRouter();
+
 	return (
-		<View className="relative w-full bg-red-100 rounded-2xl border border-red-200 p-4">
+		<Pressable
+			className="relative w-full bg-red-100 rounded-2xl border border-red-200 p-4"
+			onPress={() => router.push('/(auth)/login-screen')}
+		>
 			<View className="flex-row w-full items-start">
 				<AccountCircleIcon />
 
@@ -18,7 +24,7 @@ const NotLoggedInAllert = () => {
 					</Text>
 				</View>
 			</View>
-		</View>
+		</Pressable>
 	);
 };
 
