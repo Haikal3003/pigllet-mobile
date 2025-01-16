@@ -23,6 +23,7 @@ export default function RootLayout() {
 				<Stack.Screen name="(root)" />
 				<Stack.Screen name="(auth)" />
 				<Stack.Screen name="create-expense-form-screen" />
+				<Stack.Screen name="create-subscription-form-screen" />
 			</Stack>
 		</AuthProvider>
 	);

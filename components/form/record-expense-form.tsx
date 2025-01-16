@@ -12,7 +12,7 @@ import InputField from './input-field';
 
 import ArrowRightIcon from '@/assets/svg/arrow/keyboard-arrow-right.svg';
 import ArrowDownIcon from '@/assets/svg/arrow/keyboard-arrow-down.svg';
-import Button from './button';
+import Button from './Button';
 
 export default function RecordExpenseForm() {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());

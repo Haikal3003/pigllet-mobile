@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useRouter } from 'expo-router';
 
 import FormField from '@/components/form/form-field';
-import Button from '@/components/form/button';
+import Button from '@/components/form/Button';
 
 const LoginScreen = () => {
 	const router = useRouter();

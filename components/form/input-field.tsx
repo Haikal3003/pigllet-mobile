@@ -7,7 +7,6 @@ import {
 	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
-
 import { InputFieldProps } from '@/types/type';
 
 export default function InputField(props: InputFieldProps) {
@@ -15,7 +14,7 @@ export default function InputField(props: InputFieldProps) {
 		<KeyboardAvoidingView
 			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
 		>
-			<TouchableWithoutFeedback onPress={() => Keyboard.dismiss}>
+			<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
 				<View className="gap-2">
 					<Text className={`text-slate-900 tracking-tight ${props.labelStyle}`}>
 						{props.label}

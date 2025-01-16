@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { Dispatch, SetStateAction } from 'react';
 
 import Calendar from './calendar';
-import SubscriptionsList from './subscriptions-list';
+import SubscriptionsList from '../subscriptions-list';
 
 interface SubscriptionsTabScreen {
 	selectedYear: number;
@@ -14,7 +14,7 @@ export default function SubscriptionTabScreen({
 	selectedYear,
 }: SubscriptionsTabScreen) {
 	return (
-		<View>
+		<View className="px-6">
 			<Calendar selectedYear={selectedYear} selectedMonth={selectedMonth} />
 			<SubscriptionsList />
 		</View>

@@ -13,7 +13,7 @@ const SubscriptionsCard = (props: Subscription) => {
 	const labelColor = props.is_paid ? 'bg-[#3AC100]' : 'bg-red-600';
 
 	return (
-		<View className="flex-row justify-between gap-6 items-start pt-3 pb-3">
+		<View className="flex-row justify-between gap-6 items-start pt-3 pb-3 ">
 			<View>
 				<Text className="text-lg text-slate-900 tracking-tight">
 					{props.title}
