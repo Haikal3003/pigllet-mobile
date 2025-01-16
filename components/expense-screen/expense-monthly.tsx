@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 
-import BarChart from '../barcharts';
+import LineCharts from '../linecharts';
 import ActivityCard from '../home-screen/activity-card';
 import SummaryExpense from './summary-expense';
 import ExpenseByCategory from './expense-by-category';
@@ -47,7 +47,7 @@ const ExpenseMonthly = ({ selectedTab }: ExpenseProps) => {
 				/>
 			</View>
 
-			<BarChart currentDate={currentDate} data={data} />
+			<LineCharts currentDate={currentDate} data={data} />
 
 			<SummaryExpense reviews="monthly" />
 

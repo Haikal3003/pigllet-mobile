@@ -4,14 +4,14 @@ import { Dimensions, ScrollView, Text, View } from 'react-native';
 import { ChartData } from '@/types/type';
 import { Dispatch, SetStateAction, useState } from 'react';
 
-interface BarChart {
+interface LineChartsProps {
 	data: ChartData;
 	currentDate: Date;
 }
 
 const CHART_HEIGHT = 175;
 
-export default function Barchart({ data, currentDate }: BarChart) {
+export default function LineCharts({ data, currentDate }: LineChartsProps) {
 	const datasets = data.datasets[0].data.map((data) => data / 1000); // normalize the data by a thousand
 
 	const CHART_WIDTH = Dimensions.get('window').width * (data.labels.length / 8);

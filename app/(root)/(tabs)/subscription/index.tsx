@@ -30,7 +30,7 @@ export default function SubscriptionScreen() {
 		<ScrollView
 			showsVerticalScrollIndicator={false}
 			contentContainerStyle={{ paddingBottom: 150 }}
-			className="flex-1 w-full bg-white px-6 pt-16"
+			className="flex-1 w-full bg-white pt-16"
 		>
 			<TopTabNavigation tabs={tabs as any} />
 
@@ -50,7 +50,7 @@ function PageToRender({ identifier }: PageToRender) {
 
 	return (
 		<View>
-			<View className="flex-row justify-between mb-8">
+			<View className="flex-row justify-between mb-8 px-6">
 				<View>
 					<Text className="text-base text-slate-600 tracking-tight">
 						Your total this month

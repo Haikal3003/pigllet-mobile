@@ -3,7 +3,7 @@ export type ChartData = {
 	datasets: { data: number[] }[];
 };
 
-import { TextInputProps, TouchableOpacityProps } from "react-native";
+import { TextInputProps, TouchableOpacityProps } from 'react-native';
 
 // declare interface Driver {
 //   id: number;
@@ -59,12 +59,12 @@ import { TextInputProps, TouchableOpacityProps } from "react-native";
 // }
 
 declare interface ButtonProps extends TouchableOpacityProps {
-  title: string;
-  bgVariant?: "primary" | "secondary" | "danger" | "outline" | "success";
-  textVariant?: "primary" | "default" | "secondary" | "danger" | "success";
-  IconLeft?: React.ComponentType<any>;
-  IconRight?: React.ComponentType<any>;
-  className?: string;
+	title: string;
+	bgVariant?: 'primary' | 'secondary' | 'danger' | 'outline' | 'success';
+	textVariant?: 'primary' | 'default' | 'secondary' | 'danger' | 'success';
+	IconLeft?: React.ComponentType<any>;
+	IconRight?: React.ComponentType<any>;
+	className?: string;
 }
 
 // declare interface GoogleInputProps {
@@ -84,14 +84,14 @@ declare interface ButtonProps extends TouchableOpacityProps {
 // }
 
 declare interface InputFieldProps extends TextInputProps {
-  label: string;
-  icon?: any;
-  secureTextEntry?: boolean;
-  labelStyle?: string;
-  containerStyle?: string;
-  inputStyle?: string;
-  iconStyle?: string;
-  className?: string;
+	label: string;
+	icon?: any;
+	secureTextEntry?: boolean;
+	labelStyle?: string;
+	containerStyle?: string;
+	inputStyle?: string;
+	iconStyle?: string;
+	className?: string;
 }
 
 // declare interface PaymentProps {

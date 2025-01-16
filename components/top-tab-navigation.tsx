@@ -15,7 +15,7 @@ interface TopTabNavigation {
 
 export default function TopTabNavigation({ tabs }: TopTabNavigation) {
 	return (
-		<View className="relative flex-row justify-between border border-red-100 p-1 rounded-xl mb-8 bg-slate-100">
+		<View className="relative flex-row justify-between border border-red-100 p-1 rounded-xl mb-8 bg-slate-100 mx-6">
 			{tabs.map((tab) => (
 				<HeaderTabButton
 					key={tab.label}

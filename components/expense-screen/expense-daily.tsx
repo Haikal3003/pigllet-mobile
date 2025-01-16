@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, Text } from 'react-native';
 import { ChartData } from '@/types/type';
 
-import BarChart from '../barcharts';
+import LineCharts from '../linecharts';
 import SummaryExpense from './summary-expense';
 import CustomDatePicker from '../custom-date-picker';
 import ExpenseByCategory from './expense-by-category';
@@ -61,7 +61,7 @@ export default function ExpenseDaily() {
 				/>
 			</View>
 
-			<BarChart data={data} currentDate={currentDate} />
+			<LineCharts data={data} currentDate={currentDate} />
 
 			<SummaryExpense reviews="monthly" />
 

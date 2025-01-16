@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import BarChart from '../barcharts';
+import LineCharts from '../linecharts';
 import ArrowDownIcon from '@/assets/svg/arrow/keyboard-arrow-down.svg';
 import { months } from '@/constants/months';
 import CustomDatePicker from '../custom-date-picker';
