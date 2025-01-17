@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
-import ExpenseDaily from '@/components/expense-screen/expense-daily';
 import {
 	ExpenseContext,
 	ExpenseContextTypes,
@@ -18,7 +17,7 @@ import RecentActivities from '@/components/home-screen/recent-activities';
 
 export default function ExpenseScreen() {
 	const [currentDate, setCurrentDate] = useState(new Date());
-	const { getExpensesByDate, getExpensesByMonth } = useContext(
+	const { allExpenses, getExpensesByDate, getExpensesByMonth } = useContext(
 		ExpenseContext
 	) as ExpenseContextTypes;
 
