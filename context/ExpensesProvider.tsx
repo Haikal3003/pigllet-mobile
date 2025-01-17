@@ -18,52 +18,6 @@ export type ExpenseDataTypes = {
 };
 
 /* -------------------- DUMMY */
-const dummy: ExpenseDataTypes[] = [
-	{
-		id: 1,
-		description: 'Bath soap',
-		paid_at: new Date().toISOString(),
-		total: 2000,
-		wallet: { wallet_id: 1, wallet_name: 'Cash' },
-		category: 'Necesity',
-		transaction_type: 'spending',
-	},
-	{
-		id: 2,
-		description: 'Noodles',
-		paid_at: new Date().toISOString(),
-		total: 6000,
-		wallet: { wallet_id: 1, wallet_name: 'Cash' },
-		category: 'Food',
-		transaction_type: 'spending',
-	},
-	{
-		id: 3,
-		description: 'Hips Soda',
-		paid_at: new Date().toISOString(),
-		total: 4000,
-		wallet: { wallet_id: 1, wallet_name: 'Cash' },
-		category: 'Food',
-		transaction_type: 'spending',
-	},
-	{
-		id: 4,
-		description: 'Freelance project',
-		paid_at: new Date().toISOString(),
-		total: 5000000,
-		wallet: { wallet_id: 1, wallet_name: 'Cash' },
-		transaction_type: 'income',
-	},
-	{
-		id: 5,
-		description: 'Chicken',
-		paid_at: new Date().toISOString(),
-		total: 25000,
-		wallet: { wallet_id: 1, wallet_name: 'Cash' },
-		category: 'Food',
-		transaction_type: 'spending',
-	},
-];
 
 export interface ExpenseContextTypes {
 	loading: boolean;
@@ -71,6 +25,7 @@ export interface ExpenseContextTypes {
 	saveExpenses: (payload: ExpenseDataTypes) => void;
 	getExpensesByDate: (date: Date) => ExpenseDataTypes[] | [];
 	getExpensesByMonth: (date: Date) => ExpenseDataTypes[] | [];
+	getExpenseById: (_id: number) => ExpenseDataTypes;
 }
 
 export const ExpenseContext = createContext<ExpenseContextTypes | undefined>(
@@ -78,9 +33,7 @@ export const ExpenseContext = createContext<ExpenseContextTypes | undefined>(
 );
 
 const ExpenseProvider = ({ children }: { children: ReactNode }) => {
-	const [allExpenses, setallExpenses] = useState<ExpenseDataTypes[]>([
-		...dummy,
-	]);
+	const [allExpenses, setallExpenses] = useState<ExpenseDataTypes[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
@@ -151,6 +104,14 @@ const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 		}
 	};
 
+	const getExpenseById = (_id: number): ExpenseDataTypes => {
+		const expense = allExpenses.find((expense) => expense.id === _id);
+		if (!expense) {
+			throw new Error(`Expense with id ${_id} not found`);
+		}
+		return expense;
+	};
+
 	return (
 		<ExpenseContext.Provider
 			value={{
@@ -159,6 +120,7 @@ const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 				saveExpenses,
 				getExpensesByDate,
 				getExpensesByMonth,
+				getExpenseById,
 			}}
 		>
 			{children}

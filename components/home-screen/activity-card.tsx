@@ -1,4 +1,5 @@
-import { Text, View } from 'react-native';
+import { router } from 'expo-router';
+import { Text, TouchableHighlight, View } from 'react-native';
 import { transactionTypes } from '@/constants/transactions';
 
 interface ActivityCard {
@@ -8,6 +9,7 @@ interface ActivityCard {
 	wallet: string;
 	total: number;
 	category?: string;
+	id: number;
 }
 
 export default function ActivityCard({
@@ -17,6 +19,7 @@ export default function ActivityCard({
 	total,
 	wallet,
 	category,
+	id,
 }: ActivityCard) {
 	const formatedDate = new Date(date).toLocaleDateString('en-US', {
 		year: 'numeric',
@@ -37,33 +40,39 @@ export default function ActivityCard({
 			: 'Paid with';
 
 	return (
-		<View className="flex-row justify-between w-full pt-3 pb-3 px-6">
-			<View className="flex-col justify-start gap-1">
-				<Text className="text-lg text-slate-900 tracking-tight">
-					{description}
-				</Text>
-				<Text className="text-slate-600 tracking-tight">{formatedDate}</Text>
-
-				<Text className="text-slate-600 tracking-tight">
-					{prefixForPaidWith} {wallet}
-				</Text>
-			</View>
-
-			<View className="items-end gap-1">
-				<Text className="text-lg tracking-tight">
-					{prefixForTotal} Rp {total.toLocaleString('id-ID')}
-				</Text>
-
-				<Text className=" text-sm text-slate-600 tracking-tight capitalize">
-					{transactionType}
-				</Text>
-
-				{category && (
-					<Text className="text-xs text-white bg-red-400 p-1 px-2 rounded-full tracking-tight">
-						{category}
+		<TouchableHighlight
+			onPress={() => router.navigate(`/expense-details/${id}`)}
+			activeOpacity={0.9}
+			underlayColor="#eaeaea"
+		>
+			<View className="flex-row justify-between w-full pt-3 pb-3 px-6">
+				<View className="flex-col justify-start gap-1">
+					<Text className="text-lg text-slate-900 tracking-tight">
+						{description}
 					</Text>
-				)}
+					<Text className="text-slate-600 tracking-tight">{formatedDate}</Text>
+
+					<Text className="text-slate-600 tracking-tight">
+						{prefixForPaidWith} {wallet}
+					</Text>
+				</View>
+
+				<View className="items-end gap-1">
+					<Text className="text-lg tracking-tight">
+						{prefixForTotal} Rp {total.toLocaleString('id-ID')}
+					</Text>
+
+					<Text className=" text-sm text-slate-600 tracking-tight capitalize">
+						{transactionType}
+					</Text>
+
+					{category && (
+						<Text className="text-xs text-white bg-red-400 p-1 px-2 rounded-full tracking-tight">
+							{category}
+						</Text>
+					)}
+				</View>
 			</View>
-		</View>
+		</TouchableHighlight>
 	);
 }

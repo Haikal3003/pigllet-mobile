@@ -66,6 +66,7 @@ export default function RecentActivities({
 						total={activity.total}
 						wallet={activity.wallet.wallet_name}
 						key={activity.id}
+						id={activity.id}
 					/>
 				))}
 			</View>

@@ -28,6 +28,10 @@ export default function RootLayout() {
 						<Stack.Screen name="(auth)" />
 						<Stack.Screen name="create-expense-form-screen" />
 						<Stack.Screen name="create-subscription-form-screen" />
+						<Stack.Screen
+							name="expense-details/:id"
+							options={{ presentation: 'modal' }}
+						/>
 					</Stack>
 				</SubscriptionProvider>
 			</ExpenseProvider>
