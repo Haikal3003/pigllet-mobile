@@ -29,7 +29,7 @@ export default function CustomDatePicker({
 	}
 
 	const dateString = displayDay
-		? `${days[currentDate.getDay()]} ${currentDate.getDate()} ${
+		? `${currentDate.getDate()} ${
 				months[currentDate.getMonth()]
 		  }, ${currentDate.getFullYear()}`
 		: `${months[currentDate.getMonth()]}, ${currentDate.getFullYear()}`;
@@ -39,8 +39,8 @@ export default function CustomDatePicker({
 			<TouchableOpacity
 				onPress={() => setOpen(!open)}
 				className={`${
-					displayDate ? 'px-3 h-12' : 'w-12 h-12'
-				} gap-4  border border-red-100 rounded-xl flex-row justify-center items-center place-content-end`}
+					displayDate ? 'px-3 h-12 justify-between' : 'w-12 h-12 justify-center'
+				} gap-4  border border-red-100 rounded-xl flex-row items-center place-content-end`}
 			>
 				{displayDate && <Text className="text-slate-900">{dateString}</Text>}
 				<CalendarIcon />
