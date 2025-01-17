@@ -18,7 +18,7 @@ import RecentActivities from '@/components/home-screen/recent-activities';
 
 export default function ExpenseScreen() {
 	const [currentDate, setCurrentDate] = useState(new Date());
-	const { loading, getExpensesByDate, getExpensesByMonth } = useContext(
+	const { getExpensesByDate, getExpensesByMonth } = useContext(
 		ExpenseContext
 	) as ExpenseContextTypes;
 
