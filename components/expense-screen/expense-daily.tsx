@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { View, Text } from 'react-native';
 import { ChartData } from '@/types/type';
 
@@ -9,6 +9,11 @@ import ExpenseByCategory from './expense-by-category';
 
 import { months } from '@/constants/months';
 import ActivityCard from '../home-screen/activity-card';
+
+import {
+	ExpenseContext,
+	ExpenseContextTypes,
+} from '@/context/ExpensesProvider';
 
 const data: ChartData = {
 	labels: [
@@ -41,6 +46,24 @@ const data: ChartData = {
 
 export default function ExpenseDaily() {
 	const [currentDate, setCurrentDate] = useState(new Date());
+	const { loading, expenses } = useContext(
+		ExpenseContext
+	) as ExpenseContextTypes;
+
+	if (loading)
+		return (
+			<View>
+				<Text>Loading</Text>
+			</View>
+		);
+
+	if (expenses.length === 0) {
+		return (
+			<View>
+				<Text>You have no record</Text>
+			</View>
+		);
+	}
 
 	return (
 		<View className="flex-1 pt-16">
@@ -78,14 +101,17 @@ export default function ExpenseDaily() {
 				</View>
 
 				<View id="activity" className="flex-col" style={{ marginTop: 8 }}>
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
+					{expenses.map((expense) => (
+						<ActivityCard
+							type="spending"
+							category={expense.category}
+							date={expense.paid_at}
+							description={expense.description}
+							total={expense.total}
+							wallet={expense.wallet.wallet_name}
+							key={expense.id}
+						/>
+					))}
 				</View>
 			</View>
 		</View>

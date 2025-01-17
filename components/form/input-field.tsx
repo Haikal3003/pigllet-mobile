@@ -19,8 +19,9 @@ export default function InputField(props: InputFieldProps) {
 					<Text className={`text-slate-900 tracking-tight ${props.labelStyle}`}>
 						{props.label}
 					</Text>
+
 					<TextInput
-						className={`bg-white border border-red-100 rounded-lg px-4 ${props.inputStyle}`}
+						className={`bg-white border border-red-100 rounded-xl text-base px-4 h-12 ${props.inputStyle}`}
 						secureTextEntry={props.secureTextEntry}
 						{...props}
 					/>

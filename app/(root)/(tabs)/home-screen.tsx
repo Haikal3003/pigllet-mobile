@@ -15,7 +15,7 @@ export default function HomeScreen() {
 			<Greeting />
 			<Balance />
 			<WalletList />
-			<RecentActivities />
+			{/* <RecentActivities /> */}
 		</ScrollView>
 	);
 }

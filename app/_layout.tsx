@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
 
 import '../global.css';
+import ExpenseProvider from '@/context/ExpensesProvider';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -18,13 +19,15 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
 	return (
 		<AuthProvider>
-			<Stack screenOptions={{ headerShown: false }}>
-				<Stack.Screen name="index" />
-				<Stack.Screen name="(root)" />
-				<Stack.Screen name="(auth)" />
-				<Stack.Screen name="create-expense-form-screen" />
-				<Stack.Screen name="create-subscription-form-screen" />
-			</Stack>
+			<ExpenseProvider>
+				<Stack screenOptions={{ headerShown: false }}>
+					<Stack.Screen name="index" />
+					<Stack.Screen name="(root)" />
+					<Stack.Screen name="(auth)" />
+					<Stack.Screen name="create-expense-form-screen" />
+					<Stack.Screen name="create-subscription-form-screen" />
+				</Stack>
+			</ExpenseProvider>
 		</AuthProvider>
 	);
 }
