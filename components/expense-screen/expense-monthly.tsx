@@ -49,9 +49,9 @@ const ExpenseMonthly = ({ selectedTab }: ExpenseProps) => {
 
 			<LineCharts currentDate={currentDate} data={data} />
 
-			<SummaryExpense reviews="monthly" />
+			<SummaryExpense reviews="monthly" data={[]} />
 
-			<ExpenseByCategory />
+			<ExpenseByCategory data={[]} />
 
 			<View className="flex-1 w-full pt-6 bg-white">
 				<View className="flex-row justify-between items-center px-6">
@@ -64,14 +64,62 @@ const ExpenseMonthly = ({ selectedTab }: ExpenseProps) => {
 				</View>
 
 				<View id="activity" className="flex-col" style={{ marginTop: 8 }}>
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
-					<ActivityCard type="expense" />
+					<ActivityCard
+						transactionType={'spending'}
+						description={''}
+						date={''}
+						wallet={''}
+						total={0}
+					/>
+					<ActivityCard
+						transactionType={'spending'}
+						description={''}
+						date={''}
+						wallet={''}
+						total={0}
+					/>
+					<ActivityCard
+						transactionType={'spending'}
+						description={''}
+						date={''}
+						wallet={''}
+						total={0}
+					/>
+					<ActivityCard
+						transactionType={'spending'}
+						description={''}
+						date={''}
+						wallet={''}
+						total={0}
+					/>
+					<ActivityCard
+						transactionType={'spending'}
+						description={''}
+						date={''}
+						wallet={''}
+						total={0}
+					/>
+					<ActivityCard
+						transactionType={'spending'}
+						description={''}
+						date={''}
+						wallet={''}
+						total={0}
+					/>
+					<ActivityCard
+						transactionType={'spending'}
+						description={''}
+						date={''}
+						wallet={''}
+						total={0}
+					/>
+					<ActivityCard
+						transactionType={'spending'}
+						description={''}
+						date={''}
+						wallet={''}
+						total={0}
+					/>
 				</View>
 			</View>
 		</View>

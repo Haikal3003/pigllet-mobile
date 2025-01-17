@@ -6,6 +6,7 @@ import 'react-native-reanimated';
 
 import '../global.css';
 import ExpenseProvider from '@/context/ExpensesProvider';
+import SubscriptionProvider from '@/context/SubscriptionProvider';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -20,13 +21,15 @@ export default function RootLayout() {
 	return (
 		<AuthProvider>
 			<ExpenseProvider>
-				<Stack screenOptions={{ headerShown: false }}>
-					<Stack.Screen name="index" />
-					<Stack.Screen name="(root)" />
-					<Stack.Screen name="(auth)" />
-					<Stack.Screen name="create-expense-form-screen" />
-					<Stack.Screen name="create-subscription-form-screen" />
-				</Stack>
+				<SubscriptionProvider>
+					<Stack screenOptions={{ headerShown: false }}>
+						<Stack.Screen name="index" />
+						<Stack.Screen name="(root)" />
+						<Stack.Screen name="(auth)" />
+						<Stack.Screen name="create-expense-form-screen" />
+						<Stack.Screen name="create-subscription-form-screen" />
+					</Stack>
+				</SubscriptionProvider>
 			</ExpenseProvider>
 		</AuthProvider>
 	);
