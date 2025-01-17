@@ -19,7 +19,7 @@ const SubscriptionsCard = (props: SubscriptionDataTypes) => {
 	return (
 		<TouchableHighlight
 			className="flex-row justify-between gap-6 items-start pt-3 pb-3 px-6"
-			onPress={() => router.push(`/subcription-details/${props.id}`)}
+			onPress={() => router.push(`/subscription-details/${props.id}`)}
 			activeOpacity={0.9}
 			underlayColor="#eaeaea"
 		>

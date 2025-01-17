@@ -112,15 +112,15 @@ export default function RecordSubscriptionForm() {
 					<CloseIcon />
 				</TouchableOpacity>
 
-				{/* <TouchableOpacity
+				<TouchableOpacity
 					onPress={() => showDeleteItemAlert()}
 					className="w-12 h-12 items-center justify-center rounded-full border border-white"
 				>
 					<DeleteForeverIcon />
-				</TouchableOpacity> */}
+				</TouchableOpacity>
 			</View>
 
-			<View className="pt-8 gap-6 ">
+			<View className="py-6 gap-6 bg-white mx-2 mt-8 rounded-xl ">
 				<View className="px-6">
 					<InputField
 						label="Description"
