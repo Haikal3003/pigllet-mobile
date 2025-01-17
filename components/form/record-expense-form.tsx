@@ -12,6 +12,7 @@ import {
 import Select from './select';
 import WalletSelector from './wallet-selector';
 import { router } from 'expo-router';
+import generateUniqueNumber from '@/utils/generate-unique-numbers';
 
 export default function RecordExpenseForm() {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
@@ -31,7 +32,7 @@ export default function RecordExpenseForm() {
 	async function handleSubmit() {
 		const response: any = await saveExpenses({
 			description: description,
-			id: Date.now(),
+			id: generateUniqueNumber(),
 			paid_at: currentDate.toISOString(),
 			transaction_type: selectedType as any,
 			category: selectedType === 'income' ? undefined : selectedCategory,
@@ -91,7 +92,16 @@ export default function RecordExpenseForm() {
 						<Text className="text-slate-900 tracking-tight">Category</Text>
 
 						<Select
-							selectItems={['Necessity', 'Food', 'Healthcare']}
+							selectItems={[
+								'Food',
+								'Cosmetics',
+								'Healthcare',
+								'Necessity',
+								'Gifts',
+								'Education',
+								'Loan',
+								'Deposit',
+							]}
 							selected={selectedCategory}
 							setSelected={setSelectedCategory}
 						/>

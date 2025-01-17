@@ -36,6 +36,8 @@ export interface ExpenseContextTypes {
 	getExpensesByMonth: (date: Date) => ExpenseDataTypes[] | [];
 	getExpenseById: (_id: number) => ExpenseDataTypes;
 	updateExpenseData: (payload: ExpenseDataTypes, _id: number) => {};
+	clearData: () => void;
+	getCurrentBalance: () => number;
 }
 
 export const ExpenseContext = createContext<ExpenseContextTypes | undefined>(
@@ -49,6 +51,29 @@ const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		loadExpenses();
 	}, []);
+
+	const getCurrentBalance = () => {
+		try {
+			let balance = 0;
+			allExpenses
+				.filter((e) => e.transaction_type === 'income')
+				.forEach((i) => {
+					balance += i.total;
+				});
+			allExpenses
+				.filter((e) => e.transaction_type === 'spending')
+				.forEach((i) => {
+					balance -= i.total;
+				});
+
+			return balance;
+		} catch (error) {
+			console.log(error);
+			return 0;
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	const loadExpenses = async () => {
 		try {
@@ -163,6 +188,14 @@ const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 		}
 	};
 
+	const clearData = async () => {
+		try {
+			await AsyncStorage.removeItem(STORAGE_KEY);
+		} catch (error) {
+			setLoading(false);
+		}
+	};
+
 	return (
 		<ExpenseContext.Provider
 			value={{
@@ -174,6 +207,8 @@ const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 				getExpenseById,
 				deleteExpenseById,
 				updateExpenseData,
+				getCurrentBalance,
+				clearData,
 			}}
 		>
 			{children}

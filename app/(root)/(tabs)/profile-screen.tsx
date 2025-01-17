@@ -20,7 +20,7 @@ export default function ProfileScreen() {
 			<View className="relative w-full pt-8 gap-5">
 				<Profile />
 
-				<NotLoggedInAllert />
+				{/* <NotLoggedInAllert /> */}
 
 				<UserSettings
 					title="Account"
@@ -28,6 +28,12 @@ export default function ProfileScreen() {
 						{
 							icon: <EmailIcon />,
 							label: 'Wallets',
+							status: '',
+							onPress: () => {},
+						},
+						{
+							icon: <EmailIcon />,
+							label: 'Expense categories',
 							status: '',
 							onPress: () => {},
 						},
