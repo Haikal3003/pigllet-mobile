@@ -32,6 +32,16 @@ export default function RootLayout() {
 							name="expense-details/:id"
 							options={{ presentation: 'modal' }}
 						/>
+
+						<Stack.Screen
+							name="subscription-details/:id"
+							options={{ presentation: 'modal' }}
+						/>
+
+						<Stack.Screen
+							name="subscription-edit/:id"
+							options={{ presentation: 'modal', animation: 'fade' }}
+						/>
 					</Stack>
 				</SubscriptionProvider>
 			</ExpenseProvider>
