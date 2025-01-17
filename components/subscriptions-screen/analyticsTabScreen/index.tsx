@@ -26,9 +26,7 @@ const AnalyticsTabScreen = () => {
 			/>
 			<SummarySubscription />
 
-			<View className="px-6">
-				<SubscriptionsList />
-			</View>
+			<SubscriptionsList />
 		</View>
 	);
 };

@@ -1,7 +1,8 @@
 import { SubscriptionDataTypes } from '@/context/SubscriptionProvider';
-import { Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { Text, TouchableHighlight, View } from 'react-native';
 
-const SubscriptionsCard = (props: any) => {
+const SubscriptionsCard = (props: SubscriptionDataTypes) => {
 	const labelText = props.is_paid ? 'Paid' : 'Not Paid';
 	const labelColor = props.is_paid ? 'bg-[#3AC100]' : 'bg-red-600';
 
@@ -13,29 +14,38 @@ const SubscriptionsCard = (props: any) => {
 		year: 'numeric',
 	}).format(dueDate);
 
+	const router = useRouter();
+
 	return (
-		<View className="flex-row justify-between gap-6 items-start pt-3 pb-3 ">
-			<View>
-				<Text className="text-lg text-slate-900 tracking-tight">
-					{props.description}
-				</Text>
-				<Text className="text-slate-600 tracking-tight">
-					Due {formattedDate}
-				</Text>
-			</View>
+		<TouchableHighlight
+			className="flex-row justify-between gap-6 items-start pt-3 pb-3 px-6"
+			onPress={() => router.push(`/subcription-details/${props.id}`)}
+			activeOpacity={0.9}
+			underlayColor="#eaeaea"
+		>
+			<View className="flex-row justify-between w-full">
+				<View>
+					<Text className="text-lg text-slate-900 tracking-tight">
+						{props.description}
+					</Text>
+					<Text className="text-slate-600 tracking-tight">
+						Due {formattedDate}
+					</Text>
+				</View>
 
-			<View className="items-end">
-				<Text
-					className={`tracking-tight text-xs rounded-full px-3 p-[2px] text-white ${labelColor} `}
-				>
-					{labelText}
-				</Text>
+				<View className="items-end">
+					<Text
+						className={`tracking-tight text-xs rounded-full px-3 p-[2px] text-white ${labelColor}`}
+					>
+						{labelText}
+					</Text>
 
-				<Text className="text-lg tracking-tight">
-					Rp {props.total.toLocaleString('id-ID')}
-				</Text>
+					<Text className="text-lg tracking-tight">
+						Rp {props.total.toLocaleString('id-ID')}
+					</Text>
+				</View>
 			</View>
-		</View>
+		</TouchableHighlight>
 	);
 };
 

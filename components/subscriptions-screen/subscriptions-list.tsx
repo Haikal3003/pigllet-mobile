@@ -8,13 +8,12 @@ import {
 } from '@/context/SubscriptionProvider';
 
 const SubscriptionsList = () => {
-	const { subscriptions } = useContext(
-		subscriptionContext
-	) as SubscriptionContextType;
+	const { subscriptions, deleteSubscriptionById, updateSubscription } =
+		useContext(subscriptionContext) as SubscriptionContextType;
 
 	return (
-		<View className="mt-8">
-			<View className="flex-row justify-between items-center">
+		<View className="mt-8 ">
+			<View className="flex-row justify-between items-center px-6">
 				<Text className="text-lg" style={{ fontWeight: 800 }}>
 					Subscriptions
 				</Text>

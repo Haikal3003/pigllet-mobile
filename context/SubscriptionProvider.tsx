@@ -15,10 +15,11 @@ export interface SubscriptionContextType {
 	loading: boolean;
 	subscriptions: SubscriptionDataTypes[];
 	saveSubscription: (payload: SubscriptionDataTypes) => void;
-	deleteSubscription: (id: number) => void;
-	updateSubscription: (id: number, payload: SubscriptionDataTypes) => void;
+	deleteSubscriptionById: (id: number) => void;
+	updateSubscription: (id: number, payload: SubscriptionDataTypes) => {};
 	getSubscriptionByDate: (date: Date) => SubscriptionDataTypes[] | [];
 	getSubscriptionByMonth: (date: Date) => SubscriptionDataTypes[] | [];
+	getSubscriptionById: (_id: number) => SubscriptionDataTypes;
 }
 
 export const subscriptionContext = createContext<
@@ -63,7 +64,7 @@ const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
 		}
 	};
 
-	const deleteSubscription = async (id: number) => {
+	const deleteSubscriptionById = async (id: number) => {
 		try {
 			const filteredSubscriptions = subscriptions.filter(
 				(subs) => subs.id !== id
@@ -90,6 +91,8 @@ const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
 			);
 			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData));
 			setSubscriptions(updatedData);
+
+			return { success: true, data: updatedData };
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -136,16 +139,25 @@ const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
 		}
 	};
 
+	const getSubscriptionById = (_id: number): SubscriptionDataTypes => {
+		const subscription = subscriptions.find((subs) => subs.id === _id);
+		if (!subscription) {
+			throw new Error(`Subscription with id ${_id} not found`);
+		}
+		return subscription;
+	};
+
 	return (
 		<subscriptionContext.Provider
 			value={{
 				loading,
 				subscriptions,
 				saveSubscription,
-				deleteSubscription,
+				deleteSubscriptionById,
 				updateSubscription,
 				getSubscriptionByDate,
 				getSubscriptionByMonth,
+				getSubscriptionById,
 			}}
 		>
 			{children}

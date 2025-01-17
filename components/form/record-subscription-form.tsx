@@ -11,6 +11,7 @@ import {
 	SubscriptionContextType,
 	SubscriptionDataTypes,
 } from '@/context/SubscriptionProvider';
+import { useRouter } from 'expo-router';
 
 export default function RecordSubscriptionForm() {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
@@ -25,7 +26,9 @@ export default function RecordSubscriptionForm() {
 		subscriptionContext
 	) as SubscriptionContextType;
 
-	const submitRecordSubscription = () => {
+	const router = useRouter();
+
+	const handleSubmit = () => {
 		if (!description.trim() || !total.trim()) {
 			alert('Please fill in all the fields.');
 			return;
@@ -45,6 +48,8 @@ export default function RecordSubscriptionForm() {
 		setTotal('0');
 		setSelectedStatus('paid');
 		setCurrentDate(new Date());
+
+		router.back();
 	};
 
 	return (
@@ -71,7 +76,7 @@ export default function RecordSubscriptionForm() {
 					</TouchableOpacity>
 
 					{isModalVisible && (
-						<View className="absolute bg-white border border-red-100 rounded-xl top-12 left-0 w-full p-2 shadow-xl">
+						<View className="absolute bg-white border border-red-100 rounded-xl top-12 left-0 w-full p-2 shadow-xl z-50">
 							{['paid', 'not paid'].map((status) => (
 								<TouchableOpacity
 									key={status}
@@ -109,7 +114,7 @@ export default function RecordSubscriptionForm() {
 				</View>
 			</View>
 
-			<View className="px-6">
+			<View className="px-6 z-30">
 				<InputField
 					label="Total"
 					onChange={(event) => setTotal(event.nativeEvent.text)}
@@ -120,7 +125,7 @@ export default function RecordSubscriptionForm() {
 
 			<View className="px-6">
 				<Button
-					onPress={submitRecordSubscription}
+					onPress={handleSubmit}
 					text={loading ? 'Adding your record...' : 'Record your subscription'}
 					type="main"
 					disabled={loading}
