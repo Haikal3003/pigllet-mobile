@@ -69,7 +69,7 @@ const Calendar = ({
 	);
 
 	return (
-		<View>
+		<View className="px-6">
 			{/* Days Header */}
 			<View className="flex-row items-center justify-between bg-slate-100 p-1 rounded-md border border-slate-200">
 				{days.map((day, i) => (
