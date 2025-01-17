@@ -23,9 +23,11 @@ export interface ExpenseContextTypes {
 	loading: boolean;
 	allExpenses: ExpenseDataTypes[];
 	saveExpenses: (payload: ExpenseDataTypes) => void;
+	deleteExpenseById: (_id: number) => void;
 	getExpensesByDate: (date: Date) => ExpenseDataTypes[] | [];
 	getExpensesByMonth: (date: Date) => ExpenseDataTypes[] | [];
 	getExpenseById: (_id: number) => ExpenseDataTypes;
+	updateExpenseData: (payload: ExpenseDataTypes, _id: number) => {};
 }
 
 export const ExpenseContext = createContext<ExpenseContextTypes | undefined>(
@@ -60,8 +62,9 @@ const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 
 			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
 			setallExpenses((prevData) => [payload, ...prevData]);
+			return { success: true };
 		} catch (error) {
-			console.log('Failed to save your data!');
+			return { success: false };
 		} finally {
 			setLoading(false);
 		}
@@ -112,6 +115,46 @@ const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 		return expense;
 	};
 
+	const deleteExpenseById = async (_id: number) => {
+		try {
+			setLoading(true);
+			const newData = allExpenses.filter((expense) => expense.id !== _id);
+
+			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
+			setallExpenses((prevData) => newData);
+		} catch (error) {
+			console.log('Failed to delete your data!');
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const updateExpenseData = async (payload: ExpenseDataTypes, id: number) => {
+		try {
+			setLoading(true);
+			const expense = allExpenses.filter((expense) => expense.id === id)[0];
+			expense.category = payload.category;
+			expense.description = payload.description;
+			expense.total = payload.total;
+			expense.wallet = payload.wallet;
+			expense.transaction_type = payload.transaction_type;
+			expense.paid_at = payload.paid_at;
+
+			const newData = [
+				expense,
+				...allExpenses.filter((expense) => expense.id !== id),
+			];
+
+			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
+			setallExpenses((prevData) => newData);
+			return { success: true };
+		} catch (error) {
+			console.log('Failed to save your data!');
+		} finally {
+			setLoading(false);
+		}
+	};
+
 	return (
 		<ExpenseContext.Provider
 			value={{
@@ -121,6 +164,8 @@ const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 				getExpensesByDate,
 				getExpensesByMonth,
 				getExpenseById,
+				deleteExpenseById,
+				updateExpenseData,
 			}}
 		>
 			{children}
