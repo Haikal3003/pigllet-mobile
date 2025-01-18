@@ -104,7 +104,7 @@ export default function DetailsScreen() {
 					<View className="flex-row justify-between p-6 w-full border-b border-dashed border-slate-200">
 						<Text className="text-lg text-slate-900">Total</Text>
 						<Text className="text-lg text-slate-900">
-							Rp {expense.total.toLocaleString('id-IDR')}
+							Rp {expense.total ? expense.total.toLocaleString('id-IDR') : 0}
 						</Text>
 					</View>
 

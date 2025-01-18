@@ -1,7 +1,8 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import ProfileIcon from '@/assets/svg/settings/profile.svg';
 import CloudAlertIcon from '@/assets/svg/settings/cloud-alert.svg';
+import { UserContext, UserContextTypes } from '@/context/UserProvider';
 
 const Profile = ({ userSession }: any) => {
 	return (
@@ -12,6 +13,7 @@ const Profile = ({ userSession }: any) => {
 				</View>
 
 				<View className="pl-4">
+
 					<Text className="text-xl tracking-tight">
 						{userSession?.username || 'Guest'}
 					</Text>

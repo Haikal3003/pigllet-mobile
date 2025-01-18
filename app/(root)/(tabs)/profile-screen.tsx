@@ -76,6 +76,12 @@ export default function ProfileScreen() {
 							status: '',
 							onPress: () => {},
 						},
+						{
+							icon: <EmailIcon />,
+							label: 'Expense categories',
+							status: '',
+							onPress: () => {},
+						},
 					]}
 				/>
 

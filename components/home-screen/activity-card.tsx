@@ -59,7 +59,7 @@ export default function ActivityCard({
 
 				<View className="items-end gap-1">
 					<Text className="text-lg tracking-tight">
-						{prefixForTotal} Rp {total.toLocaleString('id-ID')}
+						{prefixForTotal} Rp {total ? total.toLocaleString('id-ID') : 0}
 					</Text>
 
 					<Text className=" text-sm text-slate-600 tracking-tight capitalize">

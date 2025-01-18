@@ -6,6 +6,7 @@ import 'react-native-reanimated';
 
 import '../global.css';
 import ExpenseProvider from '@/context/ExpensesProvider';
+import UserProvider from '@/context/UserProvider';
 import SubscriptionProvider from '@/context/SubscriptionProvider';
 
 export { ErrorBoundary } from 'expo-router';
@@ -20,6 +21,8 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
 	return (
 		<AuthProvider>
+			<UserProvider>
+				<ExpenseProvider>
 			<ExpenseProvider>
 				<SubscriptionProvider>
 					<Stack screenOptions={{ headerShown: false }}>
@@ -37,7 +40,11 @@ export default function RootLayout() {
 							name="expense-edit/:id"
 							options={{ presentation: 'modal', animation: 'fade' }}
 						/>
-
+						<Stack.Screen
+							name="expense-ocr/:id"
+							options={{ presentation: 'modal', animation: 'fade' }}
+						/>
+					</Stack>
 						<Stack.Screen
 							name="subscription-details/:id"
 							options={{ presentation: 'modal' }}
@@ -50,6 +57,7 @@ export default function RootLayout() {
 					</Stack>
 				</SubscriptionProvider>
 			</ExpenseProvider>
+      	</UserProvider>
 		</AuthProvider>
 	);
 }

@@ -15,7 +15,6 @@ export default function WalletList() {
 			>
 				<View className="flex-row gap-2 items-center">
 					<Wallet />
-					<Wallet />
 
 					<TouchableOpacity className="bg-red-300/30 w-16 h-16 rounded-full flex-row items-center justify-center border border-dashed border-red-300">
 						<View className="bg-red-700 rounded-full">
@@ -31,9 +30,9 @@ export default function WalletList() {
 function Wallet() {
 	return (
 		<View className="bg-slate-900 rounded-xl p-3 justify-between overflow-hidden h-20 w-36">
-			<Text className="text-white text-sm">DANA</Text>
+			<Text className="text-white text-sm">Cash</Text>
 
-			<Text className="text-white">08159889****</Text>
+			<Text className="text-white"></Text>
 		</View>
 	);
 }

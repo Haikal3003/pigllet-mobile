@@ -1,8 +1,10 @@
 import { Text, View } from 'react-native';
 
-import EyeIcon from '@/assets/svg/eye.svg';
+interface Balance {
+	balance: number;
+}
 
-export default function Balance() {
+export default function Balance({ balance }: Balance) {
 	return (
 		<View
 			id="balance"
@@ -12,8 +14,9 @@ export default function Balance() {
 			<Text className="text-slate-600">My balance</Text>
 
 			<View className="flex-row gap-4">
-				<Text className="text-5xl text-slate-900">Rp 6,000,000</Text>
-				<EyeIcon />
+				<Text className="text-5xl text-slate-900">
+					Rp {balance.toLocaleString('id-ID')}
+				</Text>
 			</View>
 		</View>
 	);
