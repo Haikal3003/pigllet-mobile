@@ -62,7 +62,7 @@ export default function RecordSubscriptionForm() {
 					{
 						text: 'Back',
 						style: 'cancel',
-						onPress: () => router.back(),
+						onPress: () => router.replace('/(root)/(tabs)/subscription'),
 					},
 					{
 						text: 'Done',

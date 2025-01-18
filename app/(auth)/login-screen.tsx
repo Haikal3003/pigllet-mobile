@@ -1,12 +1,27 @@
 import { View, Text, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useRouter } from 'expo-router';
 
 import FormField from '@/components/form/form-field';
 import Button from '@/components/form/Button';
+import { AuthContext, AuthContextTypes } from '@/context/AuthProvider';
 
 const LoginScreen = () => {
 	const router = useRouter();
+
+	const [email, setEmail] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+
+	const { login } = useContext(AuthContext) as AuthContextTypes;
+
+	const handleLogin = async () => {
+		try {
+			await login(email, password);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<ScrollView
 			showsVerticalScrollIndicator={false}
@@ -27,15 +42,18 @@ const LoginScreen = () => {
 				label="Email"
 				placeholder="Enter your email..."
 				keyboardType="email-address"
+				value={email}
+				onChangeText={setEmail}
 			/>
 
-			<FormField label="Password" placeholder="Enter your password..." />
-
-			<Button
-				type="main"
-				text="Login"
-				onPress={() => router.push('/register-screen')}
+			<FormField
+				label="Password"
+				placeholder="Enter your password..."
+				onChangeText={setPassword}
+				value={password}
 			/>
+
+			<Button type="main" text="Login" onPress={() => handleLogin()} />
 			<Button
 				type="secondary"
 				text="Create an account"

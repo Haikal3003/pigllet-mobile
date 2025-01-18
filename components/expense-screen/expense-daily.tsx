@@ -110,6 +110,7 @@ export default function ExpenseDaily() {
 							total={expense.total}
 							wallet={expense.wallet.wallet_name}
 							key={expense.id}
+							id={expense.id}
 						/>
 					))}
 				</View>

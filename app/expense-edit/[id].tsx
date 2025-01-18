@@ -43,7 +43,7 @@ export default function DetailsScreen() {
 		const response: any = await updateExpenseData(
 			{
 				description: description,
-				id: Date.now(),
+				id: Number(id),
 				paid_at: currentDate.toISOString(),
 				transaction_type: selectedType as any,
 				category: selectedType === 'income' ? undefined : selectedCategory,
@@ -61,15 +61,15 @@ export default function DetailsScreen() {
 					{
 						text: 'Back',
 						style: 'cancel',
-						onPress: () => router.back(),
+						onPress: () => router.replace('/(root)/(tabs)/subscription'),
 					},
 					{
 						text: 'Done',
-						style: 'default',
+						style: 'cancel',
 					},
 				],
 				{
-					cancelable: true,
+					cancelable: false,
 				}
 			);
 		}
