@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import { AuthProvider } from '@/context/AuthProvider';
+import AuthProvider from '@/context/AuthProvider';
 
 import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
@@ -7,6 +7,7 @@ import 'react-native-reanimated';
 import '../global.css';
 import ExpenseProvider from '@/context/ExpensesProvider';
 import UserProvider from '@/context/UserProvider';
+import SubscriptionProvider from '@/context/SubscriptionProvider';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -22,6 +23,8 @@ export default function RootLayout() {
 		<AuthProvider>
 			<UserProvider>
 				<ExpenseProvider>
+			<ExpenseProvider>
+				<SubscriptionProvider>
 					<Stack screenOptions={{ headerShown: false }}>
 						<Stack.Screen name="index" />
 						<Stack.Screen name="(root)" />
@@ -32,6 +35,7 @@ export default function RootLayout() {
 							name="expense-details/:id"
 							options={{ presentation: 'modal' }}
 						/>
+
 						<Stack.Screen
 							name="expense-edit/:id"
 							options={{ presentation: 'modal', animation: 'fade' }}
@@ -41,8 +45,19 @@ export default function RootLayout() {
 							options={{ presentation: 'modal', animation: 'fade' }}
 						/>
 					</Stack>
-				</ExpenseProvider>
-			</UserProvider>
+						<Stack.Screen
+							name="subscription-details/:id"
+							options={{ presentation: 'modal' }}
+						/>
+
+						<Stack.Screen
+							name="subscription-edit/:id"
+							options={{ presentation: 'modal', animation: 'fade' }}
+						/>
+					</Stack>
+				</SubscriptionProvider>
+			</ExpenseProvider>
+      	</UserProvider>
 		</AuthProvider>
 	);
 }

@@ -4,9 +4,7 @@ import ProfileIcon from '@/assets/svg/settings/profile.svg';
 import CloudAlertIcon from '@/assets/svg/settings/cloud-alert.svg';
 import { UserContext, UserContextTypes } from '@/context/UserProvider';
 
-const Profile = () => {
-	const { user } = useContext(UserContext) as UserContextTypes;
-
+const Profile = ({ userSession }: any) => {
 	return (
 		<View className="relative  bg-white p-4 rounded-2xl border border-slate-200 flex-row justify-between">
 			<View className="flex-row">
@@ -15,8 +13,13 @@ const Profile = () => {
 				</View>
 
 				<View className="pl-4">
-					<Text className="text-xl tracking-tight">{user.name}</Text>
-					<Text className="text-slate-600 tracking-tight">{user.email}</Text>
+
+					<Text className="text-xl tracking-tight">
+						{userSession?.username || 'Guest'}
+					</Text>
+					<Text className="text-slate-600 tracking-tight">
+						{userSession?.email || 'Guest@example.com'}
+					</Text>
 				</View>
 			</View>
 

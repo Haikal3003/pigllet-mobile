@@ -1,60 +1,61 @@
-import { View, Text, SafeAreaView, ScrollView, Alert } from 'react-native';
-import React, { useState } from 'react';
+import {
+	View,
+	Text,
+	SafeAreaView,
+	ScrollView,
+	Alert,
+	Modal,
+	Pressable,
+} from 'react-native';
+import React, { useContext, useState } from 'react';
 import { useRouter } from 'expo-router';
 import FormField from '@/components/form/form-field';
 import Button from '@/components/form/Button';
 import BirthdayGenderForm from '@/components/form/birthday-gender-form';
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthContext, AuthContextTypes } from '@/context/AuthProvider';
 
 const RegisterScreen = () => {
 	const router = useRouter();
 
-	const [form, setForm] = useState({
-		name: '',
-		username: '',
-		email: '',
-		job: '',
-		password: '',
-	});
+	const { register } = useContext(AuthContext) as AuthContextTypes;
 
-	const handleInputOnChange = (key: string, value: string) => {
-		setForm((prevForm) => ({ ...prevForm, [key]: value }));
-	};
+	const [fullName, setFullName] = useState<string>('');
+	const [username, setUsername] = useState<string>('');
+	const [email, setEmail] = useState<string>('');
+	const [job, setJob] = useState<string>('');
+	const [birthday, setBirthday] = useState<string>('');
+	const [gender, setGender] = useState<string>('Male');
+	const [password, setPassword] = useState<string>('');
 
 	const handleRegister = async () => {
 		if (
-			!form.name ||
-			!form.username ||
-			!form.email ||
-			!form.job ||
-			!form.password
+			!fullName ||
+			!username ||
+			!email ||
+			!job ||
+			!birthday ||
+			!gender ||
+			!password
 		) {
-			Alert.alert('Error', 'Please fill in all the fields.');
+			Alert.alert('Error', 'Please fill out all fields');
 			return;
 		}
 
 		try {
-			const response = await axios.post(
-				`${process.env.EXPO_PUBLIC_API_URL}/users`,
-				form
-			);
-			console.log('Registration Successful:', response.data);
+			const newUser = {
+				id: Date.now(),
+				fullname: fullName,
+				username: username,
+				email: email,
+				birthday: birthday,
+				gender: gender,
+				password: password,
+			};
 
-			if (response && response.data) {
-				const userRegister = {
-					id: response.data.data.id,
-					email: response.data.data.email,
-				};
-
-				await AsyncStorage.setItem(
-					'userRegister',
-					JSON.stringify(userRegister)
-				);
-			}
+			await register(newUser);
+			router.push('/(auth)/login-screen');
 		} catch (error) {
-			console.error('Registration Failed:', error);
-			Alert.alert('Error', 'Registration failed. Please try again.');
+			console.log(error);
 		}
 	};
 
@@ -70,36 +71,38 @@ const RegisterScreen = () => {
 
 			<FormField
 				label="Full Name"
-				value={form.name}
-				onChangeText={(value) => handleInputOnChange('name', value)}
 				placeholder="Enter your full name..."
+				value={fullName}
+				onChangeText={setFullName}
 			/>
 			<FormField
 				label="Username"
-				value={form.username}
-				onChangeText={(value) => handleInputOnChange('username', value)}
 				placeholder="Enter your username..."
+				value={username}
+				onChangeText={setUsername}
 			/>
 			<FormField
 				label="Email"
-				value={form.email}
-				onChangeText={(value) => handleInputOnChange('email', value)}
 				placeholder="Enter your email..."
 				keyboardType="email-address"
+				value={email}
+				onChangeText={setEmail}
 			/>
 			<FormField
 				label="Job"
-				value={form.job}
-				onChangeText={(value) => handleInputOnChange('job', value)}
 				placeholder="Enter your job..."
+				value={job}
+				onChangeText={setJob}
 			/>
-			<BirthdayGenderForm />
+
+			<BirthdayGenderForm setBirthday={setBirthday} setGender={setGender} />
+
 			<FormField
 				label="Password"
-				value={form.password}
-				onChangeText={(value) => handleInputOnChange('password', value)}
 				placeholder="Enter your password..."
 				secureTextEntry
+				value={password}
+				onChangeText={setPassword}
 			/>
 
 			<Button type="main" text="Register" onPress={handleRegister} />

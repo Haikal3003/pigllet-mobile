@@ -1,51 +1,19 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import FilterIcon from '@/assets/svg/filter.svg';
 import SubscriptionsCard from './subscriptions-card';
-
-type Subscriptions = {
-	id: number;
-	title: string;
-	due_date: string;
-	is_paid: boolean;
-	total: number;
-}[];
-
-const subscriptions: Subscriptions = [
-	{
-		id: 1,
-		title: 'Netflix',
-		due_date: new Date().toISOString(),
-		is_paid: false,
-		total: 57500,
-	},
-	{
-		id: 2,
-		title: 'HBO',
-		due_date: new Date().toISOString(),
-		is_paid: true,
-		total: 55000,
-	},
-	{
-		id: 3,
-		title: 'New York Times',
-		due_date: new Date().toISOString(),
-		is_paid: false,
-		total: 67000,
-	},
-	{
-		id: 4,
-		title: 'Blinklist',
-		due_date: new Date().toISOString(),
-		is_paid: true,
-		total: 25000,
-	},
-];
+import {
+	subscriptionContext,
+	SubscriptionContextType,
+} from '@/context/SubscriptionProvider';
 
 const SubscriptionsList = () => {
+	const { subscriptions, deleteSubscriptionById, updateSubscription } =
+		useContext(subscriptionContext) as SubscriptionContextType;
+
 	return (
-		<View className="mt-8">
-			<View className="flex-row justify-between items-center">
+		<View className="mt-8 ">
+			<View className="flex-row justify-between items-center px-6">
 				<Text className="text-lg" style={{ fontWeight: 800 }}>
 					Subscriptions
 				</Text>

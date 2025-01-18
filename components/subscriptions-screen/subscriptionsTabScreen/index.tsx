@@ -1,5 +1,4 @@
 import { View } from 'react-native';
-import { Dispatch, SetStateAction } from 'react';
 
 import Calendar from './calendar';
 import SubscriptionsList from '../subscriptions-list';
@@ -14,7 +13,7 @@ export default function SubscriptionTabScreen({
 	selectedYear,
 }: SubscriptionsTabScreen) {
 	return (
-		<View className="px-6">
+		<View>
 			<Calendar selectedYear={selectedYear} selectedMonth={selectedMonth} />
 			<SubscriptionsList />
 		</View>

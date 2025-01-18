@@ -46,7 +46,7 @@ const data: ChartData = {
 
 export default function ExpenseDaily() {
 	const [currentDate, setCurrentDate] = useState(new Date());
-	const { loading, expenses } = useContext(
+	const { loading, allExpenses } = useContext(
 		ExpenseContext
 	) as ExpenseContextTypes;
 
@@ -57,7 +57,7 @@ export default function ExpenseDaily() {
 			</View>
 		);
 
-	if (expenses.length === 0) {
+	if (allExpenses.length === 0) {
 		return (
 			<View>
 				<Text>You have no record</Text>
@@ -86,9 +86,9 @@ export default function ExpenseDaily() {
 
 			<LineCharts data={data} currentDate={currentDate} />
 
-			<SummaryExpense reviews="monthly" />
+			<SummaryExpense reviews="monthly" data={[]} />
 
-			<ExpenseByCategory />
+			<ExpenseByCategory data={[]} />
 
 			<View className="flex-1 w-full pt-6 bg-white">
 				<View className="flex-row justify-between items-center px-6">
@@ -101,15 +101,16 @@ export default function ExpenseDaily() {
 				</View>
 
 				<View id="activity" className="flex-col" style={{ marginTop: 8 }}>
-					{expenses.map((expense) => (
+					{allExpenses.map((expense: any) => (
 						<ActivityCard
-							type="spending"
+							transactionType="spending"
 							category={expense.category}
 							date={expense.paid_at}
 							description={expense.description}
 							total={expense.total}
 							wallet={expense.wallet.wallet_name}
 							key={expense.id}
+							id={expense.id}
 						/>
 					))}
 				</View>
