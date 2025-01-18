@@ -19,7 +19,7 @@ export default function DetailsScreen() {
 
 	const subscription = getSubscriptionById(Number(id));
 
-	const formatedDate = new Date(subscription.due_date).toLocaleDateString(
+	const formattedDate = new Date(subscription.due_date).toLocaleDateString(
 		'en-US',
 		{
 			year: 'numeric',
@@ -31,7 +31,7 @@ export default function DetailsScreen() {
 	const showDeleteItemAlert = () =>
 		Alert.alert(
 			'Are you sure you want to delete this item?',
-			'This action is permanent',
+			'This action is permanent.',
 			[
 				{
 					text: 'Cancel',
@@ -39,19 +39,16 @@ export default function DetailsScreen() {
 				},
 				{
 					text: 'Proceed',
-					onPress: () => {
-						deleteSubscriptionById(Number(id));
-
+					onPress: async () => {
+						await deleteSubscriptionById(Number(id));
 						setTimeout(() => {
-							router.back();
+							router.replace('/(root)/(tabs)/subscription');
 						}, 250);
 					},
 					style: 'destructive',
 				},
 			],
-			{
-				cancelable: true,
-			}
+			{ cancelable: true }
 		);
 
 	return (
@@ -74,9 +71,7 @@ export default function DetailsScreen() {
 						<EditIcon />
 					</TouchableOpacity>
 					<TouchableOpacity
-						onPress={() => {
-							showDeleteItemAlert();
-						}}
+						onPress={() => showDeleteItemAlert()}
 						className="w-12 h-12 items-center justify-center rounded-full border border-white"
 					>
 						<DeleteForeverIcon />
@@ -91,8 +86,8 @@ export default function DetailsScreen() {
 						{subscription.description}
 					</Text>
 
-					<View className="absolute bg-[#FF2C4A] w-8 h-8 rounded-full -left-4 -bottom-4"></View>
-					<View className="absolute bg-[#FF2C4A] w-8 h-8 rounded-full -right-4 -bottom-4"></View>
+					<View className="absolute bg-[#FF2C4A] w-8 h-8 rounded-full -left-4 -bottom-4" />
+					<View className="absolute bg-[#FF2C4A] w-8 h-8 rounded-full -right-4 -bottom-4" />
 				</View>
 
 				<View className="gap-8">
@@ -105,12 +100,12 @@ export default function DetailsScreen() {
 
 					<View className="flex-row justify-between p-6 w-full border-b border-dashed border-slate-200">
 						<Text>Total</Text>
-						<Text>Rp {subscription.total.toLocaleString('id-IDR')}</Text>
+						<Text>Rp {subscription.total.toLocaleString('id-ID')}</Text>
 					</View>
 
 					<View className="flex-row justify-between px-6 pb-6">
 						<Text>Added at</Text>
-						<Text>{formatedDate}</Text>
+						<Text>{formattedDate}</Text>
 					</View>
 				</View>
 			</View>

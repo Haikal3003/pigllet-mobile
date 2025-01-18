@@ -66,6 +66,7 @@ const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
 
 	const deleteSubscriptionById = async (id: number) => {
 		try {
+			setLoading(true);
 			const filteredSubscriptions = subscriptions.filter(
 				(subs) => subs.id !== id
 			);
@@ -73,7 +74,7 @@ const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
 				STORAGE_KEY,
 				JSON.stringify(filteredSubscriptions)
 			);
-			setSubscriptions(filteredSubscriptions);
+			setSubscriptions((prevData) => filteredSubscriptions);
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -86,13 +87,21 @@ const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
 		payload: SubscriptionDataTypes
 	) => {
 		try {
-			const updatedData = subscriptions.map((subs) =>
-				subs.id === id ? { ...subs, ...payload } : subs
-			);
-			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData));
-			setSubscriptions(updatedData);
+			const subscription = subscriptions.filter((subs) => subs.id === id)[0];
 
-			return { success: true, data: updatedData };
+			subscription.description = payload.description;
+			subscription.is_paid = payload.is_paid;
+			subscription.due_date = payload.due_date;
+			subscription.total = payload.total;
+
+			const newData = [
+				subscription,
+				...subscriptions.filter((subs) => subs.id !== id),
+			];
+
+			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
+			setSubscriptions((prevData) => newData);
+			return { success: true };
 		} catch (error) {
 			console.log(error);
 		} finally {

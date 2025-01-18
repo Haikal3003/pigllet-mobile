@@ -6,9 +6,9 @@ import DateTimePicker, {
 import CalendarIcon from '@/assets/svg/calendar.svg';
 import ArrowDropDown from '@/assets/svg/arrow/arrow-drop-down.svg';
 
-const BirthdayGenderForm = () => {
+const BirthdayGenderForm = ({ setBirthday, setGender }: any) => {
 	const [date, setDate] = useState<Date>(new Date());
-	const [gender, setGender] = useState<string>('Male');
+	const [gender, setGenderState] = useState<string>('Male');
 	const [showCalendar, setShowCalendar] = useState<boolean>(false);
 	const [showGender, setShowGender] = useState<boolean>(false);
 
@@ -24,6 +24,7 @@ const BirthdayGenderForm = () => {
 		const currentDate = selectedDate || date;
 		setDate(currentDate);
 		setShowCalendar(false);
+		setBirthday(formatDate(currentDate));
 	};
 
 	const showDatepicker = () => {
@@ -34,12 +35,18 @@ const BirthdayGenderForm = () => {
 		setShowGender((prev) => !prev);
 	};
 
+	const handleGenderSelect = (selectedGender: string) => {
+		setGenderState(selectedGender);
+		setGender(selectedGender); // Update gender state
+		setShowGender(false);
+	};
+
 	return (
 		<View className="flex-1 flex-row justify-center items-center w-full gap-2 mb-4">
 			<View className="w-[48%]">
 				<Text className="text-base mb-2">Birthday</Text>
 				<Pressable
-					className="relative border flex-row justify-evenly items-center border-slate-300 rounded-full p-3 "
+					className="relative border flex-row justify-evenly items-center border-slate-300 rounded-full p-3"
 					onPress={showDatepicker}
 				>
 					<Text className="text-ellipsis overflow-hidden whitespace-nowrap text-sm text-slate-900">
@@ -73,22 +80,16 @@ const BirthdayGenderForm = () => {
 				</Pressable>
 
 				{showGender && (
-					<View className="absolute w-full top-24 z-20 border  border-slate-300  bg-white rounded-xl">
+					<View className="absolute w-full top-24 z-20 border border-slate-300 bg-white rounded-xl">
 						<Pressable
-							className="border-b border-slate-300 p-3 "
-							onPress={() => {
-								setGender('Male');
-								setShowGender(false);
-							}}
+							className="border-b border-slate-300 p-3"
+							onPress={() => handleGenderSelect('Male')}
 						>
 							<Text className="text-sm">Male</Text>
 						</Pressable>
 						<Pressable
-							className="border-b border-slate-300 p-3 "
-							onPress={() => {
-								setGender('Female');
-								setShowGender(false);
-							}}
+							className="border-b border-slate-300 p-3"
+							onPress={() => handleGenderSelect('Female')}
 						>
 							<Text className="text-sm">Female</Text>
 						</Pressable>

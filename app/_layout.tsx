@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import { AuthProvider } from '@/context/AuthProvider';
+import AuthProvider from '@/context/AuthProvider';
 
 import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
@@ -32,11 +32,11 @@ export default function RootLayout() {
 							name="expense-details/:id"
 							options={{ presentation: 'modal' }}
 						/>
-            
-            <Stack.Screen
-						name="expense-edit/:id"
-						options={{ presentation: 'modal', animation: 'fade' }}
-					/>
+
+						<Stack.Screen
+							name="expense-edit/:id"
+							options={{ presentation: 'modal', animation: 'fade' }}
+						/>
 
 						<Stack.Screen
 							name="subscription-details/:id"
