@@ -11,7 +11,7 @@ export type SubscriptionDataTypes = {
 	is_paid: 'paid' | 'unpaid';
 };
 
-export interface SubscriptionContextTypess {
+export interface SubscriptionContextTypes {
 	loading: boolean;
 	allSubscriptions: SubscriptionDataTypes[];
 	saveSubscription: (payload: SubscriptionDataTypes) => void;
@@ -25,7 +25,7 @@ export interface SubscriptionContextTypess {
 }
 
 export const SubscriptionContext = createContext<
-	SubscriptionContextTypess | undefined
+	SubscriptionContextTypes | undefined
 >(undefined);
 
 const SubscriptionProvider = ({ children }: { children: ReactNode }) => {

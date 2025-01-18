@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import SubscriptionsCard from './subscriptions-card';
 import {
 	SubscriptionContext,
-	SubscriptionContextTypess,
+	SubscriptionContextTypes,
 } from '@/context/SubscriptionProvider';
 
 interface SubscriptionsList {
@@ -13,7 +13,7 @@ interface SubscriptionsList {
 const SubscriptionsList = ({ selectedDate }: SubscriptionsList) => {
 	const { getSubscriptionsByMonth } = useContext(
 		SubscriptionContext
-	) as SubscriptionContextTypess;
+	) as SubscriptionContextTypes;
 
 	return (
 		<View className="mt-8 ">

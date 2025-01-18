@@ -3,10 +3,7 @@ import React, { useContext, useState } from 'react';
 import SummarySubscription from './summary-subscription';
 import SubscriptionsList from '../subscriptions-list';
 import LineCharts from '@/components/linecharts';
-import {
-	chartDataTransformer,
-	chartDataTransformerSubs,
-} from '@/utils/chart-data-transformer';
+import { chartDataTransformerSubs } from '@/utils/chart-data-transformer';
 import {
 	SubscriptionContext,
 	SubscriptionContextTypes,
@@ -15,18 +12,18 @@ import {
 const AnalyticsTabScreen = () => {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
-	const { getSubscriptionByMonth } = useContext(
+	const { getSubscriptionsByMonth } = useContext(
 		SubscriptionContext
 	) as SubscriptionContextTypes;
 	return (
 		<View>
 			<LineCharts
-				data={chartDataTransformerSubs(getSubscriptionByMonth(currentDate))}
+				data={chartDataTransformerSubs(getSubscriptionsByMonth(currentDate))}
 				currentDate={currentDate}
 			/>
 			<SummarySubscription />
 
-			<SubscriptionsList />
+			<SubscriptionsList selectedDate={currentDate} />
 		</View>
 	);
 };

@@ -6,26 +6,26 @@ import { useContext } from 'react';
 import { View, Text } from 'react-native';
 
 export default function SummarySubscription() {
-	const { subscriptions } = useContext(
+	const { allSubscriptions } = useContext(
 		SubscriptionContext
 	) as SubscriptionContextTypes;
 
-	const totalPayments = subscriptions.reduce(
+	const totalPayments = allSubscriptions.reduce(
 		(sum, subs) => sum + subs.total,
 		0
 	);
 
 	const avgPaymentMonthly =
-		subscriptions.length > 0 ? totalPayments / subscriptions.length : 0;
+		allSubscriptions.length > 0 ? totalPayments / allSubscriptions.length : 0;
 
 	const highestPayment =
-		subscriptions.length > 0
-			? Math.max(...subscriptions.map((subs) => subs.total))
+		allSubscriptions.length > 0
+			? Math.max(...allSubscriptions.map((subs) => subs.total))
 			: 0;
 
 	const lowestPayment =
-		subscriptions.length > 0
-			? Math.min(...subscriptions.map((subs) => subs.total))
+		allSubscriptions.length > 0
+			? Math.min(...allSubscriptions.map((subs) => subs.total))
 			: 0;
 
 	const formatNumber = (number: number) => {

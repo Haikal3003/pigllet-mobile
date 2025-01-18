@@ -11,7 +11,7 @@ import DeleteForeverIcon from '@/assets/svg/delete_forever_24dp_E8EAED_FILL0_wgh
 
 import {
 	SubscriptionContext,
-	SubscriptionContextTypess,
+	SubscriptionContextTypes,
 } from '@/context/SubscriptionProvider';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
@@ -22,7 +22,7 @@ export default function RecordSubscriptionForm() {
 		getSubscriptionById,
 		deleteSubscriptionById,
 		updateSubscription,
-	} = useContext(SubscriptionContext) as SubscriptionContextTypess;
+	} = useContext(SubscriptionContext) as SubscriptionContextTypes;
 
 	const subscription = getSubscriptionById(Number(id));
 
