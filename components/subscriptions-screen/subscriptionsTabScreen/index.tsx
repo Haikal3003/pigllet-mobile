@@ -6,16 +6,18 @@ import SubscriptionsList from '../subscriptions-list';
 interface SubscriptionsTabScreen {
 	selectedYear: number;
 	selectedMonth: number;
+	selectedDate: Date;
 }
 
 export default function SubscriptionTabScreen({
 	selectedMonth,
 	selectedYear,
+	selectedDate,
 }: SubscriptionsTabScreen) {
 	return (
 		<View>
 			<Calendar selectedYear={selectedYear} selectedMonth={selectedMonth} />
-			<SubscriptionsList />
+			<SubscriptionsList selectedDate={selectedDate} />
 		</View>
 	);
 }

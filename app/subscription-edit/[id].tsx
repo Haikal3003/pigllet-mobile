@@ -10,9 +10,8 @@ import CloseIcon from '@/assets/svg/close_24dp_E8EAED_FILL0_wght300_GRAD0_opsz24
 import DeleteForeverIcon from '@/assets/svg/delete_forever_24dp_E8EAED_FILL0_wght300_GRAD0_opsz24.svg';
 
 import {
-	subscriptionContext,
-	SubscriptionContextType,
-	SubscriptionDataTypes,
+	SubscriptionContext,
+	SubscriptionContextTypess,
 } from '@/context/SubscriptionProvider';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
@@ -23,13 +22,13 @@ export default function RecordSubscriptionForm() {
 		getSubscriptionById,
 		deleteSubscriptionById,
 		updateSubscription,
-	} = useContext(subscriptionContext) as SubscriptionContextType;
+	} = useContext(SubscriptionContext) as SubscriptionContextTypess;
 
 	const subscription = getSubscriptionById(Number(id));
 
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
-	const [selectedStatus, setSelectedStatus] = useState<'paid' | 'not paid'>(
-		'paid'
+	const [selectedStatus, setSelectedStatus] = useState<'paid' | 'unpaid'>(
+		subscription.is_paid
 	);
 
 	const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
@@ -46,13 +45,16 @@ export default function RecordSubscriptionForm() {
 			return;
 		}
 
-		const response: any = await updateSubscription(Number(id), {
-			id: Date.now(),
-			description: description,
-			due_date: currentDate.toISOString(),
-			is_paid: selectedStatus === 'paid',
-			total: Number(total),
-		});
+		const response: any = await updateSubscription(
+			{
+				id: Date.now(),
+				description: description,
+				due_date: currentDate.toISOString(),
+				is_paid: selectedStatus,
+				total: Number(total),
+			},
+			Number(id)
+		);
 
 		if (response.success) {
 			Alert.alert(
@@ -145,19 +147,19 @@ export default function RecordSubscriptionForm() {
 
 						{isModalVisible && (
 							<View className="absolute bg-white border border-red-100 rounded-xl top-12 left-0 w-full p-2 shadow-xl z-50">
-								{['paid', 'not paid'].map((status) => (
+								{['paid', 'unpaid'].map((status) => (
 									<TouchableOpacity
 										key={status}
 										className={`w-full p-2 rounded-lg ${
 											selectedStatus === status ? 'bg-[#FF4863]' : 'bg-white'
 										}`}
 										onPress={() => {
-											setSelectedStatus(status as 'paid' | 'not paid');
+											setSelectedStatus(status as 'paid' | 'unpaid');
 											setIsModalVisible(false);
 										}}
 									>
 										<Text
-											className={`text-left text-lg ${
+											className={`text-left text-lg capitalize ${
 												selectedStatus === status
 													? 'text-white'
 													: 'text-slate-600'

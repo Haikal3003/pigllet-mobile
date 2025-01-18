@@ -7,15 +7,15 @@ import DeleteForeverIcon from '@/assets/svg/delete_forever_24dp_E8EAED_FILL0_wgh
 import EditIcon from '@/assets/svg/edit_24dp_E8EAED_FILL0_wght300_GRAD0_opsz24.svg';
 
 import {
-	subscriptionContext,
-	SubscriptionContextType,
+	SubscriptionContext,
+	SubscriptionContextTypess,
 } from '@/context/SubscriptionProvider';
 
 export default function DetailsScreen() {
 	const { id } = useLocalSearchParams();
 	const { getSubscriptionById, deleteSubscriptionById } = useContext(
-		subscriptionContext
-	) as SubscriptionContextType;
+		SubscriptionContext
+	) as SubscriptionContextTypess;
 
 	const subscription = getSubscriptionById(Number(id));
 
@@ -39,11 +39,10 @@ export default function DetailsScreen() {
 				},
 				{
 					text: 'Proceed',
-					onPress: async () => {
-						await deleteSubscriptionById(Number(id));
-						setTimeout(() => {
-							router.replace('/(root)/(tabs)/subscription');
-						}, 250);
+					onPress: () => {
+						deleteSubscriptionById(Number(id));
+
+						router.replace('/(root)/(tabs)/subscription');
 					},
 					style: 'destructive',
 				},
@@ -91,12 +90,10 @@ export default function DetailsScreen() {
 				</View>
 
 				<View className="gap-8">
-					{subscription.is_paid && (
-						<View className="flex-row justify-between p-6 w-full border-b border-slate-100">
-							<Text>Status</Text>
-							<Text>{subscription.is_paid ? 'Paid' : 'Not Paid'}</Text>
-						</View>
-					)}
+					<View className="flex-row justify-between p-6 w-full border-b border-slate-100">
+						<Text>Status</Text>
+						<Text className="capitalize">{subscription.is_paid}</Text>
+					</View>
 
 					<View className="flex-row justify-between p-6 w-full border-b border-dashed border-slate-200">
 						<Text>Total</Text>

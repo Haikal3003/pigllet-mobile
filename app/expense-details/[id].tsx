@@ -39,9 +39,7 @@ export default function DetailsScreen() {
 					onPress: () => {
 						deleteExpenseById(Number(id));
 
-						setTimeout(() => {
-							router.back();
-						}, 250);
+						router.back();
 					},
 					style: 'destructive',
 				},

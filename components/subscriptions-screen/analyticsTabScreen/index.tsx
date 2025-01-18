@@ -8,16 +8,16 @@ import {
 	chartDataTransformerSubs,
 } from '@/utils/chart-data-transformer';
 import {
-	subscriptionContext,
-	SubscriptionContextType,
+	SubscriptionContext,
+	SubscriptionContextTypes,
 } from '@/context/SubscriptionProvider';
 
 const AnalyticsTabScreen = () => {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
 	const { getSubscriptionByMonth } = useContext(
-		subscriptionContext
-	) as SubscriptionContextType;
+		SubscriptionContext
+	) as SubscriptionContextTypes;
 	return (
 		<View>
 			<LineCharts

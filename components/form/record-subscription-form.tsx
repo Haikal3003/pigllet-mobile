@@ -7,24 +7,25 @@ import Button from './Button';
 import ArrowRightIcon from '@/assets/svg/arrow/keyboard-arrow-right.svg';
 import ArrowDownIcon from '@/assets/svg/arrow/keyboard-arrow-down.svg';
 import {
-	subscriptionContext,
-	SubscriptionContextType,
+	SubscriptionContext,
+	SubscriptionContextTypes,
 	SubscriptionDataTypes,
 } from '@/context/SubscriptionProvider';
 import { useRouter } from 'expo-router';
+import generateUniqueNumber from '@/utils/generate-unique-numbers';
 
 export default function RecordSubscriptionForm() {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
-	const [selectedStatus, setSelectedStatus] = useState<'paid' | 'not paid'>(
-		'paid'
+	const [selectedStatus, setSelectedStatus] = useState<'paid' | 'unpaid'>(
+		'unpaid'
 	);
 	const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 	const [description, setDescription] = useState<string>('');
 	const [total, setTotal] = useState<string>('0');
 
 	const { loading, saveSubscription } = useContext(
-		subscriptionContext
-	) as SubscriptionContextType;
+		SubscriptionContext
+	) as SubscriptionContextTypes;
 
 	const router = useRouter();
 
@@ -35,10 +36,10 @@ export default function RecordSubscriptionForm() {
 		}
 
 		const subscription: SubscriptionDataTypes = {
-			id: Date.now(),
+			id: generateUniqueNumber(),
 			description: description,
 			due_date: currentDate.toISOString(),
-			is_paid: selectedStatus === 'paid',
+			is_paid: selectedStatus,
 			total: Number(total),
 		};
 
@@ -77,19 +78,19 @@ export default function RecordSubscriptionForm() {
 
 					{isModalVisible && (
 						<View className="absolute bg-white border border-red-100 rounded-xl top-12 left-0 w-full p-2 shadow-xl z-50">
-							{['paid', 'not paid'].map((status) => (
+							{['paid', 'unpaid'].map((status) => (
 								<TouchableOpacity
 									key={status}
 									className={`w-full p-2 rounded-lg ${
 										selectedStatus === status ? 'bg-[#FF4863]' : 'bg-white'
 									}`}
 									onPress={() => {
-										setSelectedStatus(status as 'paid' | 'not paid');
+										setSelectedStatus(status as 'paid' | 'unpaid');
 										setIsModalVisible(false);
 									}}
 								>
 									<Text
-										className={`text-left text-lg ${
+										className={`text-left text-lg capitalize ${
 											selectedStatus === status
 												? 'text-white'
 												: 'text-slate-600'

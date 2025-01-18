@@ -1,51 +1,51 @@
-import React, { useState, useEffect, ReactNode, createContext } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const STORAGE_KEY = 'SUBSCRIPTION';
+const STORAGE_KEY = 'SUBSCRIPTIONS';
 
 export type SubscriptionDataTypes = {
 	id: number;
 	description: string;
 	total: number;
 	due_date: string;
-	is_paid: boolean;
+	is_paid: 'paid' | 'unpaid';
 };
 
-export interface SubscriptionContextType {
+export interface SubscriptionContextTypess {
 	loading: boolean;
-	subscriptions: SubscriptionDataTypes[];
+	allSubscriptions: SubscriptionDataTypes[];
 	saveSubscription: (payload: SubscriptionDataTypes) => void;
 	deleteSubscriptionById: (id: number) => void;
-	updateSubscription: (id: number, payload: SubscriptionDataTypes) => {};
-	getSubscriptionByDate: (date: Date) => SubscriptionDataTypes[] | [];
-	getSubscriptionByMonth: (date: Date) => SubscriptionDataTypes[] | [];
-	getSubscriptionById: (_id: number) => SubscriptionDataTypes;
+	getSubscriptionsByDate: (date: Date) => SubscriptionDataTypes[] | [];
+	getSubscriptionsByMonth: (date: Date) => SubscriptionDataTypes[] | [];
+	getSubscriptionById: (id: number) => SubscriptionDataTypes;
+	updateSubscription: (payload: SubscriptionDataTypes, id: number) => {};
+	clearData: () => void;
+	getMonthlyTotal: (date: Date) => number;
 }
 
-export const subscriptionContext = createContext<
-	SubscriptionContextType | undefined
+export const SubscriptionContext = createContext<
+	SubscriptionContextTypess | undefined
 >(undefined);
 
-const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
-	const [subscriptions, setSubscriptions] = useState<SubscriptionDataTypes[]>(
-		[]
-	);
-
+const SubscriptionProvider = ({ children }: { children: ReactNode }) => {
+	const [allSubscriptions, setSubscriptions] = useState<
+		SubscriptionDataTypes[]
+	>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
-		loadSubscription();
+		loadSubscriptions();
 	}, []);
 
-	const loadSubscription = async () => {
+	const loadSubscriptions = async () => {
 		try {
-			const storedSubscription = await AsyncStorage.getItem(STORAGE_KEY);
-
-			if (storedSubscription) {
-				setSubscriptions(JSON.parse(storedSubscription));
+			const storedSubscriptions = await AsyncStorage.getItem(STORAGE_KEY);
+			if (storedSubscriptions) {
+				setSubscriptions(JSON.parse(storedSubscriptions));
 			}
 		} catch (error) {
-			console.log(error);
+			console.log('Failed to load allSubscriptions:', error);
 		} finally {
 			setLoading(false);
 		}
@@ -53,12 +53,14 @@ const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
 
 	const saveSubscription = async (payload: SubscriptionDataTypes) => {
 		try {
-			const newData = [payload, ...subscriptions];
-
+			setLoading(true);
+			const newData = [payload, ...allSubscriptions];
 			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
 			setSubscriptions((prevData) => [payload, ...prevData]);
+			return { success: true };
 		} catch (error) {
-			console.log(error);
+			console.log('Failed to save subscription:', error);
+			return { success: false };
 		} finally {
 			setLoading(false);
 		}
@@ -67,111 +69,127 @@ const SubcriptionProvider = ({ children }: { children: ReactNode }) => {
 	const deleteSubscriptionById = async (id: number) => {
 		try {
 			setLoading(true);
-			const filteredSubscriptions = subscriptions.filter(
-				(subs) => subs.id !== id
-			);
-			await AsyncStorage.setItem(
-				STORAGE_KEY,
-				JSON.stringify(filteredSubscriptions)
-			);
-			setSubscriptions((prevData) => filteredSubscriptions);
-		} catch (error) {
-			console.log(error);
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	const updateSubscription = async (
-		id: number,
-		payload: SubscriptionDataTypes
-	) => {
-		try {
-			const subscription = subscriptions.filter((subs) => subs.id === id)[0];
-
-			subscription.description = payload.description;
-			subscription.is_paid = payload.is_paid;
-			subscription.due_date = payload.due_date;
-			subscription.total = payload.total;
-
-			const newData = [
-				subscription,
-				...subscriptions.filter((subs) => subs.id !== id),
-			];
-
+			const newData = allSubscriptions.filter((sub) => sub.id !== id);
 			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
-			setSubscriptions((prevData) => newData);
-			return { success: true };
+			setSubscriptions(newData);
 		} catch (error) {
-			console.log(error);
+			console.log('Failed to delete subscription:', error);
 		} finally {
 			setLoading(false);
 		}
 	};
 
-	const getSubscriptionByDate = (date: Date) => {
+	const getSubscriptionsByDate = (date: Date) => {
 		try {
-			const subscriptionInCurrentDate = subscriptions.filter((subs) => {
-				const subscriptionDueDate = new Date(subs.due_date);
-
-				const sameDate = subscriptionDueDate.getDate() === date.getDate();
-				const sameMonth = subscriptionDueDate.getMonth() === date.getMonth();
-				const sameYear =
-					subscriptionDueDate.getFullYear() === date.getFullYear();
-
-				if (sameDate && sameMonth && sameYear) return subs;
+			return allSubscriptions.filter((sub) => {
+				const subDate = new Date(sub.due_date);
+				return (
+					subDate.getDate() === date.getDate() &&
+					subDate.getMonth() === date.getMonth() &&
+					subDate.getFullYear() === date.getFullYear()
+				);
 			});
-
-			return subscriptionInCurrentDate;
 		} catch (error) {
-			console.log('Failed to retrieve your data!');
+			console.log('Failed to filter allSubscriptions by date:', error);
 			return [];
 		}
 	};
 
-	const getSubscriptionByMonth = (date: Date) => {
+	const getSubscriptionsByMonth = (date: Date) => {
 		try {
-			const subscriptionInCurrentDate = subscriptions.filter((subs) => {
-				const subscriptionDueDate = new Date(subs.due_date);
-
-				const sameMonth = subscriptionDueDate.getMonth() === date.getMonth();
-				const sameYear =
-					subscriptionDueDate.getFullYear() === date.getFullYear();
-
-				if (sameMonth && sameYear) return subs;
+			return allSubscriptions.filter((sub) => {
+				const subDate = new Date(sub.due_date);
+				return (
+					subDate.getMonth() === date.getMonth() &&
+					subDate.getFullYear() === date.getFullYear()
+				);
 			});
-
-			return subscriptionInCurrentDate;
 		} catch (error) {
-			console.log('Failed to retrieve your data!');
+			console.log('Failed to filter allSubscriptions by month:', error);
 			return [];
 		}
 	};
 
-	const getSubscriptionById = (_id: number): SubscriptionDataTypes => {
-		const subscription = subscriptions.find((subs) => subs.id === _id);
+	const getSubscriptionById = (id: number): SubscriptionDataTypes => {
+		const subscription = allSubscriptions.find((sub) => sub.id === id);
 		if (!subscription) {
-			throw new Error(`Subscription with id ${_id} not found`);
+			throw new Error(`Subscription with id ${id} not found`);
 		}
 		return subscription;
 	};
 
+	const updateSubscription = async (
+		payload: SubscriptionDataTypes,
+		id: number
+	) => {
+		try {
+			setLoading(true);
+			const subscription = allSubscriptions.filter((s) => s.id === id)[0];
+			subscription.description = payload.description;
+			subscription.due_date = payload.due_date;
+			subscription.is_paid = payload.is_paid;
+			subscription.total = payload.total;
+
+			const newData = [
+				subscription,
+				...allSubscriptions.filter((sub) => sub.id !== id),
+			];
+
+			await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
+			setSubscriptions(newData);
+			return { success: true };
+		} catch (error) {
+			console.log('Failed to update subscription:', error);
+			return { success: false };
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const clearData = async () => {
+		try {
+			await AsyncStorage.removeItem(STORAGE_KEY);
+			setSubscriptions([]);
+		} catch (error) {
+			console.log('Failed to clear subscription data:', error);
+		}
+	};
+
+	const getMonthlyTotal = (date: Date) => {
+		try {
+			return allSubscriptions
+				.filter((sub) => {
+					const subDate = new Date(sub.due_date);
+					return (
+						subDate.getMonth() === date.getMonth() &&
+						subDate.getFullYear() === date.getFullYear()
+					);
+				})
+				.reduce((total, sub) => total + sub.total, 0);
+		} catch (error) {
+			console.log('Failed to calculate monthly total:', error);
+			return 0;
+		}
+	};
+
 	return (
-		<subscriptionContext.Provider
+		<SubscriptionContext.Provider
 			value={{
 				loading,
-				subscriptions,
+				allSubscriptions,
 				saveSubscription,
 				deleteSubscriptionById,
-				updateSubscription,
-				getSubscriptionByDate,
-				getSubscriptionByMonth,
+				getSubscriptionsByDate,
+				getSubscriptionsByMonth,
 				getSubscriptionById,
+				updateSubscription,
+				clearData,
+				getMonthlyTotal,
 			}}
 		>
 			{children}
-		</subscriptionContext.Provider>
+		</SubscriptionContext.Provider>
 	);
 };
 
-export default SubcriptionProvider;
+export default SubscriptionProvider;

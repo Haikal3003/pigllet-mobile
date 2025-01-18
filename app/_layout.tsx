@@ -23,41 +23,38 @@ export default function RootLayout() {
 		<AuthProvider>
 			<UserProvider>
 				<ExpenseProvider>
-			<ExpenseProvider>
-				<SubscriptionProvider>
-					<Stack screenOptions={{ headerShown: false }}>
-						<Stack.Screen name="index" />
-						<Stack.Screen name="(root)" />
-						<Stack.Screen name="(auth)" />
-						<Stack.Screen name="create-expense-form-screen" />
-						<Stack.Screen name="create-subscription-form-screen" />
-						<Stack.Screen
-							name="expense-details/:id"
-							options={{ presentation: 'modal' }}
-						/>
+					<SubscriptionProvider>
+						<Stack screenOptions={{ headerShown: false }}>
+							<Stack.Screen name="index" />
+							<Stack.Screen name="(root)" />
+							<Stack.Screen name="(auth)" />
+							<Stack.Screen name="create-expense-form-screen" />
+							<Stack.Screen name="create-subscription-form-screen" />
+							<Stack.Screen
+								name="expense-details/:id"
+								options={{ presentation: 'modal' }}
+							/>
 
-						<Stack.Screen
-							name="expense-edit/:id"
-							options={{ presentation: 'modal', animation: 'fade' }}
-						/>
-						<Stack.Screen
-							name="expense-ocr/:id"
-							options={{ presentation: 'modal', animation: 'fade' }}
-						/>
-					</Stack>
-						<Stack.Screen
-							name="subscription-details/:id"
-							options={{ presentation: 'modal' }}
-						/>
-
-						<Stack.Screen
-							name="subscription-edit/:id"
-							options={{ presentation: 'modal', animation: 'fade' }}
-						/>
-					</Stack>
-				</SubscriptionProvider>
-			</ExpenseProvider>
-      	</UserProvider>
+							<Stack.Screen
+								name="expense-edit/:id"
+								options={{ presentation: 'modal', animation: 'fade' }}
+							/>
+							<Stack.Screen
+								name="expense-ocr/:id"
+								options={{ presentation: 'modal', animation: 'fade' }}
+							/>
+							<Stack.Screen
+								name="subscription-details/:id"
+								options={{ presentation: 'modal' }}
+							/>
+							<Stack.Screen
+								name="subscription-edit/:id"
+								options={{ presentation: 'modal', animation: 'fade' }}
+							/>
+						</Stack>
+					</SubscriptionProvider>
+				</ExpenseProvider>
+			</UserProvider>
 		</AuthProvider>
 	);
 }

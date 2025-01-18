@@ -1,14 +1,14 @@
 import {
-	subscriptionContext,
-	SubscriptionContextType,
+	SubscriptionContext,
+	SubscriptionContextTypes,
 } from '@/context/SubscriptionProvider';
 import { useContext } from 'react';
 import { View, Text } from 'react-native';
 
 export default function SummarySubscription() {
 	const { subscriptions } = useContext(
-		subscriptionContext
-	) as SubscriptionContextType;
+		SubscriptionContext
+	) as SubscriptionContextTypes;
 
 	const totalPayments = subscriptions.reduce(
 		(sum, subs) => sum + subs.total,

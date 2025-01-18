@@ -3,8 +3,7 @@ import { useRouter } from 'expo-router';
 import { Text, TouchableHighlight, View } from 'react-native';
 
 const SubscriptionsCard = (props: SubscriptionDataTypes) => {
-	const labelText = props.is_paid ? 'Paid' : 'Not Paid';
-	const labelColor = props.is_paid ? 'bg-[#3AC100]' : 'bg-red-600';
+	const labelColor = props.is_paid === 'paid' ? 'bg-[#3AC100]' : 'bg-red-600';
 
 	const dueDate = new Date(props.due_date);
 	const formattedDate = new Intl.DateTimeFormat('en-US', {
@@ -35,9 +34,9 @@ const SubscriptionsCard = (props: SubscriptionDataTypes) => {
 
 				<View className="items-end">
 					<Text
-						className={`tracking-tight text-xs rounded-full px-3 p-[2px] text-white ${labelColor}`}
+						className={`tracking-tight text-xs rounded-full px-3 p-[2px] capitalize text-white ${labelColor}`}
 					>
-						{labelText}
+						{props.is_paid}
 					</Text>
 
 					<Text className="text-lg tracking-tight">

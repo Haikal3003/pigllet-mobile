@@ -1,15 +1,19 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useContext } from 'react';
-import FilterIcon from '@/assets/svg/filter.svg';
 import SubscriptionsCard from './subscriptions-card';
 import {
-	subscriptionContext,
-	SubscriptionContextType,
+	SubscriptionContext,
+	SubscriptionContextTypess,
 } from '@/context/SubscriptionProvider';
 
-const SubscriptionsList = () => {
-	const { subscriptions, deleteSubscriptionById, updateSubscription } =
-		useContext(subscriptionContext) as SubscriptionContextType;
+interface SubscriptionsList {
+	selectedDate: Date;
+}
+
+const SubscriptionsList = ({ selectedDate }: SubscriptionsList) => {
+	const { getSubscriptionsByMonth } = useContext(
+		SubscriptionContext
+	) as SubscriptionContextTypess;
 
 	return (
 		<View className="mt-8 ">
@@ -17,14 +21,10 @@ const SubscriptionsList = () => {
 				<Text className="text-lg" style={{ fontWeight: 800 }}>
 					Subscriptions
 				</Text>
-
-				<TouchableOpacity className="flex-row items-center justify-center px-4 h-10 border border-red-100 rounded-lg">
-					<FilterIcon />
-				</TouchableOpacity>
 			</View>
 
 			<View className="mt-8" style={{ marginTop: 8 }}>
-				{subscriptions.map((subs) => (
+				{getSubscriptionsByMonth(selectedDate).map((subs) => (
 					<SubscriptionsCard key={subs.id} {...subs} />
 				))}
 			</View>
