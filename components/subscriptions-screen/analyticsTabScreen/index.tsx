@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React, { useContext, useState } from 'react';
 import SummarySubscription from './summary-subscription';
 import SubscriptionsList from '../subscriptions-list';
@@ -10,20 +10,22 @@ import {
 } from '@/context/SubscriptionProvider';
 
 const AnalyticsTabScreen = () => {
-	const [currentDate, setCurrentDate] = useState<Date>(new Date());
+	const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
 	const { getSubscriptionsByMonth } = useContext(
 		SubscriptionContext
 	) as SubscriptionContextTypes;
+
 	return (
 		<View>
 			<LineCharts
-				data={chartDataTransformerSubs(getSubscriptionsByMonth(currentDate))}
-				currentDate={currentDate}
+				data={chartDataTransformerSubs(getSubscriptionsByMonth(selectedDate))}
+				currentDate={selectedDate}
 			/>
+
 			<SummarySubscription />
 
-			<SubscriptionsList selectedDate={currentDate} />
+			<SubscriptionsList selectedDate={selectedDate} />
 		</View>
 	);
 };
