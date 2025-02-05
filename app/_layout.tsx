@@ -1,22 +1,24 @@
 import { Stack } from 'expo-router';
-import AuthProvider from '@/context/AuthProvider';
+import { useCallback, useEffect, useState } from 'react';
 
+import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import 'react-native-reanimated';
 
-import '../global.css';
+import AuthProvider from '@/context/AuthProvider';
 import ExpenseProvider from '@/context/ExpensesProvider';
 import UserProvider from '@/context/UserProvider';
 import SubscriptionProvider from '@/context/SubscriptionProvider';
 
-export { ErrorBoundary } from 'expo-router';
-
-export const unstable_settings = {
-	initialRouteName: '(secure-routes)',
-};
+import '../global.css';
 
 // Prevent splash screen auto-hide
 SplashScreen.preventAutoHideAsync();
+
+// Set the animation options. This is optional.
+SplashScreen.setOptions({
+	duration: 1000,
+	fade: true,
+});
 
 export default function RootLayout() {
 	return (

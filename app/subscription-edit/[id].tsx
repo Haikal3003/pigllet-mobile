@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import InputField from '@/components/form/input-field';
 import React, { useContext, useState } from 'react';
 import CustomDatePicker from '@/components/custom-date-picker';
-import Button from '@/components/form/Button';
+import Button from '@/components/buttons/custom-button';
 
 import ArrowRightIcon from '@/assets/svg/arrow/keyboard-arrow-right.svg';
 import ArrowDownIcon from '@/assets/svg/arrow/keyboard-arrow-down.svg';

@@ -15,7 +15,7 @@ import FingerPrintIcon from '@/assets/svg/settings/finger-print.svg';
 import DeleteForeverIcon from '@/assets/svg/settings/delete-forever.svg';
 import { useContext } from 'react';
 import { AuthContext, AuthContextTypes } from '@/context/AuthProvider';
-import Button from '@/components/form/Button';
+import Button from '@/components/buttons/custom-button';
 import { useRouter } from 'expo-router';
 
 export default function ProfileScreen() {

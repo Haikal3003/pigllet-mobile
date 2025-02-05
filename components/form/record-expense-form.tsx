@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 
-import Button from './Button';
+import Button from '../buttons/custom-button';
 import CustomDatePicker from '../custom-date-picker';
 import InputField from './input-field';
 

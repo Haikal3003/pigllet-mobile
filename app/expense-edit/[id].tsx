@@ -14,7 +14,7 @@ import InputField from '@/components/form/input-field';
 import CustomDatePicker from '@/components/custom-date-picker';
 import Select from '@/components/form/select';
 import WalletSelector from '@/components/form/wallet-selector';
-import Button from '@/components/form/Button';
+import Button from '@/components/buttons/custom-button';
 
 export default function DetailsScreen() {
 	const { id } = useLocalSearchParams();

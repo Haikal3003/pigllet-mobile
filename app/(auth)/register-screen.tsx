@@ -10,7 +10,7 @@ import {
 import React, { useContext, useState } from 'react';
 import { useRouter } from 'expo-router';
 import FormField from '@/components/form/form-field';
-import Button from '@/components/form/Button';
+import Button from '@/components/buttons/custom-button';
 import BirthdayGenderForm from '@/components/form/birthday-gender-form';
 import { AuthContext, AuthContextTypes } from '@/context/AuthProvider';
 
